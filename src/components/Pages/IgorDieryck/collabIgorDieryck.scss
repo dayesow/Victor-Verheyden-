@@ -1,0 +1,161 @@
+.collab-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-pair {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.image-pair img {
+  width: 40%;
+  height: auto;
+  margin: 10px;
+}
+
+.collab-image {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  transition: opacity 1s ease;
+}
+
+.collab-image:hover {
+  opacity: 0.8;
+}
+
+/* Lightbox hidden by default */
+.lightbox {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 901;
+}
+
+/* Lightbox when active */
+.lightbox.active {
+  display: flex; /* Visible when active */
+}
+
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-image {
+  width: 27%;
+  place-content: center;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  padding: 10px 10px;
+  color: black;
+  font-size: 35px;
+  font-weight: 100 !important;
+  cursor: pointer;
+}
+
+.close-button:hover {
+  //   font-style: italic;
+}
+.lightbox-controls {
+  display: flex;
+  justify-content: space-between;
+
+  width: 27%;
+  margin: 30px auto;
+}
+
+.prev-button,
+.next-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  //   padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  font-style: italic;
+}
+.prev-button,
+.next-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: pointer;
+  font-size: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  position: relative; /* Nodig voor absolute positionering van de bolletjes */
+  padding-left: 20px; /* Voeg wat padding toe zodat de tekst niet overlapt met het bolletje */
+  padding-right: 20px; /* Voeg padding toe aan de rechterkant */
+}
+
+.prev-button::before,
+.next-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000000;
+  transition: opacity 0.5s;
+}
+
+.prev-button::before {
+  left: 0px; /* Plaats het bolletje aan de linkerkant */
+}
+
+.next-button::after {
+  right: 0px; /* Plaats het bolletje aan de rechterkant */
+}
+
+.prev-button:hover::before,
+.next-button:hover::after {
+  opacity: 1;
+  animation: blink 1000ms infinite;
+}
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

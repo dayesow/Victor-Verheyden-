@@ -1,0 +1,48 @@
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  display: grid;
+  place-items: center;
+  z-index: 9999;
+  animation: slide-up 1s ease-out forwards;
+}
+
+.typing-demo {
+  font-family: "IBM Plex Mono", monospace;
+  width: 16.5ch;
+  font-size: 14px;
+  color: white;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid transparent;
+  animation: typing 4s steps(22), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 16.5ch;
+  }
+}
+
+@keyframes blink-caret {
+  50% {
+    border-color: transparent;
+  }
+}
