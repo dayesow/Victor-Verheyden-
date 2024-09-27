@@ -1,7 +1,7 @@
 import React from "react";
 import "./header.scss";
 
-const Header = () => {
+const Header = ({ toggleMenu }) => {
   return (
     <header className="header">
       <div className="header-left">
@@ -13,7 +13,8 @@ const Header = () => {
         </a>
       </div>
       <div className="header-right">
-        <a className="plus-btn">
+        {/* The plus button triggers the toggleMenu function */}
+        <a className="plus-btn" onClick={toggleMenu}>
           <span>+</span>
         </a>
       </div>

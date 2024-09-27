@@ -29,3 +29,47 @@ body {
   box-sizing: border-box;
   /* cursor: none; */
 }
+
+.next-btn {
+  position: absolute;
+  bottom: 40px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: "IBM Plex Mono", monospace;
+  padding-left: 30px; /* Adds space for the dot */
+}
+
+.next-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0; /* Positions the dot 0px from the left */
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000000;
+  transition: opacity 0.5s;
+}
+
+.next-btn:hover::before {
+  opacity: 1;
+  animation: blink 750ms infinite;
+}
+
+.next-btn:hover {
+  font-style: italic;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

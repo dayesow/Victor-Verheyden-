@@ -1,0 +1,23 @@
+/* PageTransition.scss */
+
+/* Initially position the white background off-screen at the bottom */
+.page-transition-cover {
+  position: fixed;
+  top: 100%; /* Positioned off-screen */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 9999;
+  transition: top 1s ease-in-out; /* Controls the sliding animation */
+}
+
+/* Slide the white background from bottom to top before navigation */
+.page-transition-cover.page-leaving {
+  top: 0; /* Slides the white background up */
+}
+
+/* Slide the white background from top to bottom after page load */
+.page-transition-cover.page-entering {
+  top: -100%; /* Slides the white background down after loading */
+}

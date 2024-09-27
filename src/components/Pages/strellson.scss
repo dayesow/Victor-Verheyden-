@@ -1,0 +1,20 @@
+.section2 {
+  height: 97vh; /* Vult het volledige venster */
+  width: 100%;
+  overflow-y: hidden;
+  background-color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Zorgt voor horizontale centrering */
+  align-items: center; /* Zorgt voor verticale centrering */
+}
+
+.section2 {
+  gap: 16px;
+}
+
+.section2-img {
+  height: 50%;
+  max-height: 100%;
+  object-fit: cover; /* Zorgt ervoor dat de afbeelding zijn verhoudingen behoudt */
+}

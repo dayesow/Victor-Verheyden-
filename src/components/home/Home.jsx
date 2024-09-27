@@ -43,7 +43,7 @@ const Home = () => {
         <div className="tooltips-container" ref={containerRef}>
           {[
             {
-              href: "https://victorverheyden.com/collaboration-with-igordieryck/",
+              href: "/collab-igor-dieryck",
               imgSrc:
                 "https://victorverheyden.com/wp-content/uploads/2023/11/IgorDieryck-1-Medium.jpeg",
               alt: "Collab Igor Dieryck",

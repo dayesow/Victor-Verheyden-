@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Marquee from "../../marquee/Marquee";
+import Marquee from "../marquee/Marquee";
+import ScrollToTop from "../scrollToTop/ScrollToTop";
 import "./collabIgorDieryck.scss";
 
 const CollabIgorDieryck = () => {
@@ -61,7 +62,7 @@ const CollabIgorDieryck = () => {
 
   const t = (
     <>
-      <b>Collaboration w. Igor Dieryck</b> - Date, sept. 2022 - Model, Arne
+      <b> Collaboration w. Igor Dieryck</b> - Date, sept. 2022 - Model, Arne
       Meynaerts - Assistance, Victor Depraetere - Location, Brussels -
       <b> Collaboration w. Igor Dieryck</b> - Date, sept. 2022 - Model, Arne
       Meynaerts - Assistance, Victor Depraetere - Location, Brussels -
@@ -89,7 +90,8 @@ const CollabIgorDieryck = () => {
           />
         </div>
       ))}
-
+      <a className="next-btn"> Next - Portrait of an artist Rodrigo</a>
+      <ScrollToTop />
       {lightboxOpen && (
         <div className={`lightbox ${lightboxOpen ? "active" : ""}`}>
           <div className="lightbox-content">
