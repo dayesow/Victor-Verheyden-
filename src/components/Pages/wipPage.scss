@@ -1,0 +1,22 @@
+.wippage-section {
+  height: 100vh;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery {
+  display: flex; /* Gebruikt flexbox om de afbeeldingen horizontaal uit te lijnen */
+  width: max-content; /* Zorgt ervoor dat de breedte van de gallery wordt bepaald door de inhoud */
+}
+
+.gallery img {
+  height: 250px; /* Stelt de hoogte van de afbeeldingen in */
+  object-fit: cover; /* Zorgt ervoor dat de afbeeldingen hun aspect ratio behouden en de container vullen */
+  margin-right: 5px; /* Voeg wat ruimte toe tussen de afbeeldingen */
+}

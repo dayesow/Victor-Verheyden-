@@ -4,7 +4,7 @@ import "./menu.scss";
 const Menu = ({ isMenuOpen, toggleMenu }) => {
   return (
     <div className="menu-content">
-      <a className="plus-btn" onClick={toggleMenu}>
+      {/* <a className="plus-btn" onClick={toggleMenu}>
         <span>-</span>
       </a>
       <h2>Works</h2>
@@ -17,7 +17,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
         <li>Les Hommes Andersom</li>
         <li>Matthias Geerts & Morgan Lugo for Strellson</li>
       </ul>
-      <h2>Info</h2>
+      <h2>Info</h2> */}
     </div>
   );
 };

@@ -1,11 +1,22 @@
+import Marquee from "../marquee/Marquee";
+import ScrollToTop from "../scrollToTop/ScrollToTop";
 import "./rodrigo.scss";
 
 const Rodrigo = () => {
+  const t = (
+    <>
+      <b> Portrait of a writer, Rodrigo Costa Ribeiro </b> - Date, febr. 2022 -
+      Model, Rodrigo Costa Ribeiro - Location, Brussels -
+      <b> Portrait of a writer, Rodrigo Costa Ribeiro </b> - Date, febr. 2022 -
+      Model, Rodrigo Costa Ribeiro - Location, Brussels -
+    </>
+  );
   return (
-    <div className="section">
-      <div className="columns">
+    <div className="rodrigo-section">
+      <Marquee text={t} duration={40} />
+      <div className="rodrigo-columns">
         {/* Eerste kolom */}
-        <div className="column">
+        <div className="rodrigo-column-1">
           <img
             src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_1018-min-scaled.jpg"
             className="section-img-1"
@@ -29,7 +40,7 @@ const Rodrigo = () => {
         </div>
 
         {/* Tweede kolom */}
-        <div className="column">
+        <div className="rodrigo-column-2">
           <img
             src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_0981-min-scaled.jpg"
             className="section-img-5"
@@ -47,6 +58,8 @@ const Rodrigo = () => {
           />
         </div>
       </div>
+      <a className="next-btn">Next - So Close Yet So Far From Paradise</a>
+      <ScrollToTop />
     </div>
   );
 };

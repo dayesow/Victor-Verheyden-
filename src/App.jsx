@@ -12,6 +12,7 @@ import LesHommesAndersom from "./components/Pages/LesHommesAndersom";
 import Strellson from "./components/Pages/Strellson";
 import Rodrigo from "./components/Pages/Rodrigo";
 import Menu from "./components/menu/Menu";
+import WipPage from "./components/Pages/WipPage";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -38,7 +39,7 @@ function App() {
       <Header toggleMenu={toggleMenu} />
 
       {/* Render the Menu and control its visibility with isMenuOpen */}
-      <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+      {/* <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} /> */}
       {/* {loading ? <Preloader /> : <Home />} */}
       <BrowserRouter>
         {/* <PageTransition /> */}
@@ -56,6 +57,7 @@ function App() {
           />
           <Route path="/matthias-geerts-morgan-lugo" element={<Strellson />} />
           <Route path="/rodrigo" element={<Rodrigo />} />
+          <Route path="/wip" element={<WipPage />} />
         </Routes>
       </BrowserRouter>
     </>
