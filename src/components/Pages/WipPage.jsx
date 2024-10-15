@@ -2,8 +2,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import "./wipPage.scss";
 import Marquee from "../marquee/Marquee";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 
 const WipPage = () => {
+  const handleNavigation = useHandleNavigation();
   const images = [
     "https://victorverheyden.com/wp-content/uploads/2023/11/IgorDieryck-1-Medium.jpeg",
     "https://victorverheyden.com/wp-content/uploads/2023/11/Rodrigo-1-Medium.jpeg",
@@ -38,10 +40,11 @@ const WipPage = () => {
 
   const t = (
     <>
-      <b> Portrait of a writer, Rodrigo Costa Ribeiro </b> - Date, febr. 2022 -
-      Model, Rodrigo Costa Ribeiro - Location, Brussels -
-      <b> Portrait of a writer, Rodrigo Costa Ribeiro </b> - Date, febr. 2022 -
-      Model, Rodrigo Costa Ribeiro - Location, Brussels -
+      <b> So Close Yet So Far From Paradise </b> - Work in progress - Unfolded
+      during Covid, reflecting on emotions, freedom and the endless search for
+      paradise -<b> So Close Yet So Far From Paradise </b> - Work in progress -
+      Unfolded during Covid, reflecting on emotions, freedom and the endless
+      search for paradise -
     </>
   );
 
@@ -56,7 +59,12 @@ const WipPage = () => {
           <img key={index} src={`${image}`} alt={`Gallery Image ${index}`} />
         ))}
       </div>
-      <a className="next-btn">Next - Portrait of an artist Jaoud Alloul</a>
+      <a
+        className="next-btn"
+        onClick={() => handleNavigation("/portrait-of-an-artist-jaouad-alloul")}
+      >
+        Next - Portrait of an artist Jaoud Alloul
+      </a>
     </div>
   );
 };

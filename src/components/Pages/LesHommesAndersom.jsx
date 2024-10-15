@@ -2,9 +2,11 @@ import "./lesHommesAndersom.scss";
 import Marquee from "../marquee/Marquee";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import { useRef } from "react";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 
 const LesHommesAndersom = () => {
   const containerRef = useRef(null); // Ref naar de container om secties te tracken
+  const handleNavigation = useHandleNavigation();
 
   //   useEffect(() => {
   //     const handleScroll = (e) => {
@@ -43,7 +45,7 @@ const LesHommesAndersom = () => {
 
   const t = (
     <>
-      <b>Performance, Les Hommes Andersom </b> - Date, sept. 2023 - Artists,
+      <b> Performance, Les Hommes Andersom </b> - Date, sept. 2023 - Artists,
       Tars Vandebeek & Mathias Goethals - Location, Kortrijk -
       <b> Performance, Les Hommes Andersom </b> - Date, sept. 2023 - Artists,
       Tars Vandebeek & Mathias Goethals - Location, Kortrijk -
@@ -89,7 +91,12 @@ const LesHommesAndersom = () => {
           src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_7723-2-min-scaled.jpg"
           className="section1-img"
         />
-        <a className="next-btn"> Next - Matthias geerts & Morgan Lugo </a>
+        <a
+          className="next-btn"
+          onClick={() => handleNavigation("/matthias-geerts-morgan-lugo")}
+        >
+          Next - Matthias geerts & Morgan Lugo{" "}
+        </a>
         <ScrollToTop />
       </div>
     </div>

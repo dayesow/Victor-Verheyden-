@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Marquee from "../marquee/Marquee";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./collabIgorDieryck.scss";
 
 const CollabIgorDieryck = () => {
@@ -35,6 +36,7 @@ const CollabIgorDieryck = () => {
   const [currentImage, setCurrentImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
+  const handleNavigation = useHandleNavigation();
   const openLightbox = (image, index) => {
     setCurrentImage(image);
     setCurrentIndex(index);
@@ -90,7 +92,9 @@ const CollabIgorDieryck = () => {
           />
         </div>
       ))}
-      <a className="next-btn"> Next - Portrait of an artist Rodrigo</a>
+      <a className="next-btn" onClick={() => handleNavigation("/rodrigo")}>
+        Next - Portrait of an artist Rodrigo
+      </a>
       <ScrollToTop />
       {lightboxOpen && (
         <div className={`lightbox ${lightboxOpen ? "active" : ""}`}>

@@ -26,7 +26,7 @@ const Marquee = ({ text, duration }) => {
     return () => {
       gsap.killTweensOf(marquee);
     };
-  }, [text]);
+  }, []);
 
   return (
     <div

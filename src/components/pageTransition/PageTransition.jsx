@@ -1,48 +1,71 @@
-import React, { useEffect, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useRef,
+  useEffect,
+  useState,
+} from "react";
+import { gsap } from "gsap";
 import { useLocation, useNavigate } from "react-router-dom";
 import "./pageTransition.scss";
 
-const PageTransition = () => {
-  const [isPageLeaving, setIsPageLeaving] = useState(false);
-  const [isPageEntering, setIsPageEntering] = useState(false);
+// Context aanmaken
+const NavigationContext = createContext();
+
+const PageTransition = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const transitionRef = useRef();
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
-    // When route changes, reset entering state to true
-    setIsPageEntering(true);
+    // Binnenkomst animatie - geen transitie bij het laden van de pagina
+    gsap.fromTo(
+      transitionRef.current,
+      { y: "0%" },
+      { y: "100%", duration: 2, ease: "power2.inOut" }
+    );
+  }, []);
 
-    // Trigger transition effect after loading completes
-    setTimeout(() => {
-      setIsPageEntering(false);
-    }, 1000); // Duration should match the CSS transition time (1s)
-  }, [location]);
-
-  const handleNavigation = (path) => {
-    // Trigger leaving transition (bottom to top)
-    setIsPageLeaving(true);
-
-    // Wait for the animation to finish, then navigate
-    setTimeout(() => {
-      navigate(path);
-    }, 1000); // Duration should match the CSS transition time (1s)
+  const handleNavigation = (to) => {
+    setIsExiting(true);
+    gsap.fromTo(
+      transitionRef.current,
+      { y: "100%" },
+      {
+        y: "0%",
+        duration: 2,
+        ease: "power2.inOut",
+        onComplete: () => {
+          navigate(to);
+          setTimeout(() => {
+            gsap.fromTo(
+              transitionRef.current,
+              { y: "0%" },
+              {
+                y: "100%",
+                duration: 2,
+                ease: "power2.inOut",
+                onComplete: () => {
+                  setIsExiting(false);
+                  return;
+                },
+              }
+            );
+          }, 100);
+        },
+      }
+    );
   };
-
+  // if (isExiting) return;
   return (
-    <>
-      {/* The page transition overlay */}
-      <div
-        className={`page-transition-cover ${
-          isPageLeaving ? "page-leaving" : ""
-        } ${isPageEntering ? "page-entering" : ""}`}
-      ></div>
-
-      {/* Example navigation with transition */}
-      <button onClick={() => handleNavigation("/collab-igor-dieryck")}>
-        Go to Collab Igor Dieryck
-      </button>
-    </>
+    <NavigationContext.Provider value={handleNavigation}>
+      <div className="transition-bg" ref={transitionRef}></div>
+      {children}
+    </NavigationContext.Provider>
   );
 };
+
+export const useHandleNavigation = () => useContext(NavigationContext);
 
 export default PageTransition;

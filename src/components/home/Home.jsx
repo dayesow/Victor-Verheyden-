@@ -1,10 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./home.scss";
 import Header from "../header/Header";
 
 const Home = () => {
   const containerRef = useRef(null);
+  const handleNavigation = useHandleNavigation(); // Gebruik de navigatiecontext
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -39,7 +41,6 @@ const Home = () => {
   return (
     <>
       <div className="tooltip-main-container">
-        {/* <Header /> */}
         <div className="tooltips-container" ref={containerRef}>
           {[
             {
@@ -50,21 +51,21 @@ const Home = () => {
               title: "Collab - Igor Dieryck",
             },
             {
-              href: "https://victorverheyden.com/portrait-of-a-writer-rodrigo-costa-ribeiro/",
+              href: "/rodrigo",
               imgSrc:
                 "https://victorverheyden.com/wp-content/uploads/2023/11/Rodrigo-1-Medium.jpeg",
               alt: "Rodrigo Costa Ribeiro",
               title: "Portrait of a writer Rodrigo Costa Ribeiro",
             },
             {
-              href: "https://victorverheyden.com/so-close-yet-so-far-fromparadise/",
+              href: "/wip",
               imgSrc:
                 "https://victorverheyden.com/wp-content/uploads/2023/11/wip-Medium.jpeg",
               alt: "So Close Yet So Far From Paradise",
               title: "Work in progress - So Close Yet So Far - From Paradise",
             },
             {
-              href: "https://victorverheyden.com/portrait-of-an-artist-jaouad-alloul/",
+              href: "/portrait-of-an-artist-jaouad-alloul",
               imgSrc:
                 "https://victorverheyden.com/wp-content/uploads/2023/11/jaouad-1-Medium.jpeg",
               alt: "Jaouad Alloul",
@@ -78,7 +79,11 @@ const Home = () => {
               title: "Playtime Photobook",
             },
           ].map(({ href, imgSrc, alt, title }, index) => (
-            <a href={href} className="tooltip" key={index}>
+            <a
+              onClick={() => handleNavigation(href)} // Gebruik hier handleNavigation
+              className="tooltip"
+              key={index}
+            >
               <div>
                 <img src={imgSrc} alt={alt} className="dot" />
                 <div className="content">
@@ -97,7 +102,7 @@ const Home = () => {
           </a>
           <a>Info</a>
         </div>
-      </div>{" "}
+      </div>
     </>
   );
 };

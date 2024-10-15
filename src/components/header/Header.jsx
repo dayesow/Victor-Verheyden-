@@ -1,11 +1,14 @@
 import React from "react";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./header.scss";
 
 const Header = ({ toggleMenu }) => {
+  const handleNavigation = useHandleNavigation(); // Gebruik de navigatiecontext
+
   return (
     <header className="header">
       <div className="header-left">
-        <a href="/" className="logo">
+        <a onClick={() => handleNavigation("/home")} className="logo">
           <span className="initials">V</span>
           <span className="full-name">ictor</span>
           <span className="initials"> V</span>

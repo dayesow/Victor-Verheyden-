@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import Marquee from "../marquee/Marquee";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import "./jaouadAlloul.scss";
 
 const JaouadAlloul = () => {
+  const handleNavigation = useHandleNavigation();
   const containerRef = useRef(null); // Ref naar de container om secties te tracken
 
   //   useEffect(() => {
@@ -91,7 +93,9 @@ const JaouadAlloul = () => {
           src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_98682-min-2048x1638.jpg"
           className="section1-img"
         />
-        <a className="next-btn"> Next - Portrait of an artist Rodrigo</a>
+        <a className="next-btn" onClick={() => handleNavigation("/wip")}>
+          Next - Playtime Photobook
+        </a>
         <ScrollToTop />
       </div>
     </div>

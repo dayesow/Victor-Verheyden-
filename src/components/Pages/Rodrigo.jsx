@@ -1,8 +1,10 @@
 import Marquee from "../marquee/Marquee";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import "./rodrigo.scss";
+import { useHandleNavigation } from "../pageTransition/PageTransition";
 
 const Rodrigo = () => {
+  const handleNavigation = useHandleNavigation();
   const t = (
     <>
       <b> Portrait of a writer, Rodrigo Costa Ribeiro </b> - Date, febr. 2022 -
@@ -58,7 +60,9 @@ const Rodrigo = () => {
           />
         </div>
       </div>
-      <a className="next-btn">Next - So Close Yet So Far From Paradise</a>
+      <a className="next-btn" onClick={() => handleNavigation("/wip")}>
+        Next - So Close Yet So Far From Paradise
+      </a>
       <ScrollToTop />
     </div>
   );

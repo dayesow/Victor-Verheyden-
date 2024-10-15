@@ -11,8 +11,9 @@ import JaouadAlloul from "./components/Pages/JaouadAlloul";
 import LesHommesAndersom from "./components/Pages/LesHommesAndersom";
 import Strellson from "./components/Pages/Strellson";
 import Rodrigo from "./components/Pages/Rodrigo";
-import Menu from "./components/menu/Menu";
+
 import WipPage from "./components/Pages/WipPage";
+import Menu from "./components/menu/Menu";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -36,29 +37,33 @@ function App() {
   return (
     <>
       <CustomMouse />
-      <Header toggleMenu={toggleMenu} />
-
-      {/* Render the Menu and control its visibility with isMenuOpen */}
-      {/* <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} /> */}
-      {/* {loading ? <Preloader /> : <Home />} */}
       <BrowserRouter>
-        {/* <PageTransition /> */}
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route index element={<Home />} />
-          <Route path="/collab-igor-dieryck" element={<CollabIgorDieryck />} />
-          <Route
-            path="/portrait-of-an-artist-jaouad-alloul"
-            element={<JaouadAlloul />}
-          />
-          <Route
-            path="/performance-les-hommes-andersom"
-            element={<LesHommesAndersom />}
-          />
-          <Route path="/matthias-geerts-morgan-lugo" element={<Strellson />} />
-          <Route path="/rodrigo" element={<Rodrigo />} />
-          <Route path="/wip" element={<WipPage />} />
-        </Routes>
+        <PageTransition>
+          <Header toggleMenu={toggleMenu} />
+          <Menu isMenuOpen={isMenuOpen} toggleMenu={toggleMenu} />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route index element={<Home />} />
+            <Route
+              path="/collab-igor-dieryck"
+              element={<CollabIgorDieryck />}
+            />
+            <Route
+              path="/portrait-of-an-artist-jaouad-alloul"
+              element={<JaouadAlloul />}
+            />
+            <Route
+              path="/performance-les-hommes-andersom"
+              element={<LesHommesAndersom />}
+            />
+            <Route
+              path="/matthias-geerts-morgan-lugo"
+              element={<Strellson />}
+            />
+            <Route path="/rodrigo" element={<Rodrigo />} />
+            <Route path="/wip" element={<WipPage />} />
+          </Routes>
+        </PageTransition>
       </BrowserRouter>
     </>
   );

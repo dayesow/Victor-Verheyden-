@@ -62,6 +62,38 @@ body {
   font-style: italic;
 }
 
+.menu-btn {
+  position: relative;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+}
+.menu-btn:hover {
+  font-style: italic;
+}
+
+.menu-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -15px;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000000;
+  opacity: 0;
+}
+
+.menu-btn.active::before {
+  animation: none !important;
+  opacity: 1;
+}
+
+.menu-btn:not(.active):hover::before {
+  opacity: 1;
+  animation: blink 750ms infinite;
+}
 @keyframes blink {
   0% {
     opacity: 1;
