@@ -27,7 +27,7 @@ const WipPage = () => {
       },
       {
         xPercent: -galleryeWidth / 2,
-        duration: 10000,
+        duration: 5500,
         repeat: -1,
         ease: "linear",
       }
@@ -36,7 +36,7 @@ const WipPage = () => {
     return () => {
       gsap.killTweensOf(gallery);
     };
-  }, []);
+  }, [handleNavigation]);
 
   const t = (
     <>

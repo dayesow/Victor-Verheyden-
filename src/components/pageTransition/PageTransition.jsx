@@ -1,21 +1,16 @@
-import React, {
-  createContext,
-  useContext,
-  useRef,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useRef, useEffect, useState } from "react";
 import { gsap } from "gsap";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./pageTransition.scss";
 
 // Context aanmaken
 const NavigationContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const PageTransition = ({ children }) => {
-  const location = useLocation();
   const navigate = useNavigate();
   const transitionRef = useRef();
+  // eslint-disable-next-line no-unused-vars
   const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
@@ -28,6 +23,7 @@ const PageTransition = ({ children }) => {
   }, []);
 
   const handleNavigation = (to) => {
+    if (isExiting) return;
     setIsExiting(true);
     gsap.fromTo(
       transitionRef.current,
@@ -38,6 +34,7 @@ const PageTransition = ({ children }) => {
         ease: "power2.inOut",
         onComplete: () => {
           navigate(to);
+          window.scrollTo(0, 0);
           setTimeout(() => {
             gsap.fromTo(
               transitionRef.current,

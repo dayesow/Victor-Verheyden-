@@ -1,0 +1,126 @@
+.info-main {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  width: 80%;
+  margin: 0 auto;
+  cursor: none;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 2rem);
+    justify-content: flex-start;
+  }
+
+  .first-container {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+    gap: 100px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      width: 100%;
+      gap: 2rem;
+    }
+
+    .info-text {
+      padding-top: 4rem;
+      width: 55%;
+
+      @media (max-width: 768px) {
+        padding-top: 8rem;
+        width: 100%;
+      }
+
+      > p {
+        color: black;
+        font-size: 12px;
+        line-height: 24px;
+        line-height: 18px;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        opacity: 0;
+        transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+      }
+      .fade-in {
+        opacity: 1; /* Change to 1 when class is added */
+      }
+    }
+
+    .img-container {
+      width: 45%;
+
+      @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 5rem;
+      }
+
+      > img {
+        object-fit: contain;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+.email-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: none;
+  font-size: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  position: relative;
+
+  &:hover {
+    font-style: italic;
+  }
+}
+
+.email-button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000000;
+  transition: opacity 0.5s;
+}
+
+.email-button::before {
+  transform: translateX(-150%) translateY(-50%);
+}
+
+.email-button:hover::before {
+  opacity: 1;
+  animation: blink 750ms infinite;
+}
+
+.contact-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  opacity: 1;
+}

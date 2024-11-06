@@ -1,7 +1,7 @@
-import React from "react";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./header.scss";
 
+// eslint-disable-next-line react/prop-types
 const Header = ({ toggleMenu }) => {
   const handleNavigation = useHandleNavigation(); // Gebruik de navigatiecontext
 

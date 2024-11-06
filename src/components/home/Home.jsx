@@ -1,14 +1,22 @@
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useEffect, useRef } from "react";
+// import gsap from "gsap";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./home.scss";
-import Header from "../header/Header";
 
-const Home = () => {
+// eslint-disable-next-line react/prop-types
+const Home = ({ toggleMenu }) => {
   const containerRef = useRef(null);
-  const handleNavigation = useHandleNavigation(); // Gebruik de navigatiecontext
+  const handleNavigation = useHandleNavigation();
 
   useEffect(() => {
+    const isDesktop = window.innerWidth >= 768;
+    const cursorElement = document.querySelector(".app-cursor");
+
+    if (!isDesktop && cursorElement) {
+      cursorElement.style.display = "none"; // Hide cursor on mobile
+      return;
+    }
+
     const handleMouseMove = (e) => {
       if (e.target.classList.contains("dot")) {
         const target = e.target.nextElementSibling;
@@ -21,20 +29,25 @@ const Home = () => {
           target.style.top = `${e.clientY - offset.top + tipDist}px`;
           target.style.left = `${e.clientX - offset.left + tipDist}px`;
         }
-        document.querySelector(".app-cursor").style.display = "none";
+        if (cursorElement) cursorElement.style.display = "none";
       } else {
         const content = document.getElementsByClassName("content");
         for (let i = 0; i < content.length; i++) {
           content[i].classList.remove("visible");
         }
-        document.querySelector(".app-cursor").style.display = "block";
+        if (cursorElement) cursorElement.style.display = "block";
       }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
+    if (isDesktop) {
+      window.addEventListener("mousemove", handleMouseMove);
+    }
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+      if (isDesktop) {
+        window.removeEventListener("mousemove", handleMouseMove);
+      }
+      if (cursorElement) cursorElement.style.display = "block";
     };
   }, []);
 
@@ -45,36 +58,31 @@ const Home = () => {
           {[
             {
               href: "/collab-igor-dieryck",
-              imgSrc:
-                "https://victorverheyden.com/wp-content/uploads/2023/11/IgorDieryck-1-Medium.jpeg",
+              imgSrc: "/HomeIgorDieryck.jpeg",
               alt: "Collab Igor Dieryck",
               title: "Collab - Igor Dieryck",
             },
             {
               href: "/rodrigo",
-              imgSrc:
-                "https://victorverheyden.com/wp-content/uploads/2023/11/Rodrigo-1-Medium.jpeg",
+              imgSrc: "/HomeRodrigo.jpeg",
               alt: "Rodrigo Costa Ribeiro",
               title: "Portrait of a writer Rodrigo Costa Ribeiro",
             },
             {
               href: "/wip",
-              imgSrc:
-                "https://victorverheyden.com/wp-content/uploads/2023/11/wip-Medium.jpeg",
+              imgSrc: "/HomeWip.jpeg",
               alt: "So Close Yet So Far From Paradise",
               title: "Work in progress - So Close Yet So Far - From Paradise",
             },
             {
               href: "/portrait-of-an-artist-jaouad-alloul",
-              imgSrc:
-                "https://victorverheyden.com/wp-content/uploads/2023/11/jaouad-1-Medium.jpeg",
+              imgSrc: "/HomeJaouad.jpeg",
               alt: "Jaouad Alloul",
               title: "Portrait of an artist Jaouad Alloul",
             },
             {
               href: "https://victorverheyden.com/photobook-playtime/",
-              imgSrc:
-                "https://victorverheyden.com/wp-content/uploads/2023/11/photobook-1-Medium.jpeg",
+              imgSrc: "/HomePhotobook.jpeg",
               alt: "Playtime Photobook",
               title: "Playtime Photobook",
             },
@@ -94,13 +102,10 @@ const Home = () => {
           ))}
         </div>
         <div className="tooltip-footer">
-          <a
-            href="https://victorverheyden.com/wp-content/uploads/2023/11/photobook-1-Medium.jpeg"
-            className="btn"
-          >
+          <a onClick={toggleMenu} className="btn">
             See more
           </a>
-          <a>Info</a>
+          <a onClick={() => handleNavigation("/info")}>Info</a>
         </div>
       </div>
     </>

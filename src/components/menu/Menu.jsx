@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
-import { useLocation, Link } from "react-router-dom"; // Import Link for navigation
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./menu.scss";
 
+// eslint-disable-next-line react/prop-types
 const Menu = ({ isMenuOpen, toggleMenu }) => {
   const location = useLocation();
   const handleNavigation = useHandleNavigation();
@@ -37,9 +38,23 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
     }, 300);
   };
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape" && isMenuOpen) {
+        toggleMenu();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscape);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [isMenuOpen, toggleMenu]);
+
   return (
     <>
-      {/* Overlay that covers the screen when the menu is open */}
       <div
         className={`overlay ${isMenuOpen ? "visible" : "closing"}`}
         onClick={toggleMenu}
@@ -71,7 +86,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                   onClick={() => handleMenuNavigation(item.path)}
                   className={`menu-btn ${
                     location.pathname === item.path ? "active" : ""
-                  }`} // Apply 'active' class if path matches
+                  }`}
                 >
                   {item.label}
                 </a>
@@ -83,7 +98,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
               className={`menu-btn ${
                 location.pathname === "/info" ? "active" : ""
               }`}
-              onClick={() => handleMenuNavigation("/home")}
+              onClick={() => handleMenuNavigation("/info")}
             >
               Info
             </a>

@@ -20,14 +20,14 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* cursor: none; */
+  cursor: none !important;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* cursor: none; */
+  cursor: none !important;
 }
 
 .next-btn {
@@ -37,6 +37,11 @@ body {
   font-weight: 500;
   font-family: "IBM Plex Mono", monospace;
   padding-left: 30px; /* Adds space for the dot */
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding-left: 20px;
+  }
 }
 
 .next-btn::before {
@@ -102,6 +107,29 @@ body {
     opacity: 0;
   }
   100% {
+    opacity: 1;
+  }
+}
+
+.common-img-fade {
+  opacity: 0;
+  transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+.fade-in {
+  opacity: 1;
+}
+
+.fade-in:hover {
+  opacity: 0.8; /* Dim when hovering */
+  transition: opacity 0.5s ease; /* Faster transition on hover */
+}
+
+@media (max-width: 768px) {
+  .common-img-fade {
+    opacity: 0;
+  }
+
+  .fade-in {
     opacity: 1;
   }
 }

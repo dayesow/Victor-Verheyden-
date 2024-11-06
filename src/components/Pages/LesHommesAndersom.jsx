@@ -1,47 +1,109 @@
 import "./lesHommesAndersom.scss";
 import Marquee from "../marquee/Marquee";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
+import Lightbox from "../utilComponents/lightBox/Lightbox";
 
 const LesHommesAndersom = () => {
-  const containerRef = useRef(null); // Ref naar de container om secties te tracken
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+  const [currentIndex, setCurrentIndex] = useState(null);
+  const imageRefs = useRef([]);
   const handleNavigation = useHandleNavigation();
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
 
-  //   useEffect(() => {
-  //     const handleScroll = (e) => {
-  //       e.preventDefault(); // Voorkomt standaard scrollgedrag
-  //       const delta = e.deltaY;
-  //       const sections = Array.from(document.querySelectorAll(".section"));
-  //       const currentSection = sections.find((section) => {
-  //         const rect = section.getBoundingClientRect();
-  //         return rect.top >= 0 && rect.top <= window.innerHeight / 2;
-  //       });
+    imageRefs.current.forEach((imgRef) => {
+      if (imgRef) {
+        observer.observe(imgRef);
+      }
+    });
 
-  //       const currentIndex = sections.indexOf(currentSection);
+    return () => {
+      imageRefs.current.forEach((imgRef) => {
+        if (imgRef) {
+          observer.unobserve(imgRef);
+        }
+      });
+    };
+  }, []);
 
-  //       if (delta > 0 && currentIndex < sections.length - 1) {
-  //         // Scroll naar volgende sectie
-  //         sections[currentIndex + 1].scrollIntoView({ behavior: "smooth" });
-  //       } else if (delta < 0 && currentIndex > 0) {
-  //         // Scroll naar vorige sectie
-  //         sections[currentIndex - 1].scrollIntoView({ behavior: "smooth" });
-  //       }
-  //     };
+  const openLightbox = (image, index) => {
+    setCurrentImage(image);
+    setCurrentIndex(index);
+    setLightboxOpen(true);
+  };
 
-  //     // Voeg de event listener toe aan de ref van de container
-  //     const container = containerRef.current;
-  //     if (container) {
-  //       container.addEventListener("wheel", handleScroll, { passive: false });
-  //     }
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    // Force a reflow to trigger fade-in effect again
+    setTimeout(() => {
+      imageRefs.current.forEach((imgRef) => {
+        if (imgRef) {
+          imgRef.classList.remove("fade-in");
+          imgRef.offsetHeight; // Trigger reflow
+          imgRef.classList.add("fade-in");
+        }
+      });
+    }, 100); // Delay to allow the lightbox to close
+  };
 
-  //     // Cleanup om de event listener te verwijderen bij demontage
-  //     return () => {
-  //       if (container) {
-  //         container.removeEventListener("wheel", handleScroll);
-  //       }
-  //     };
-  //   }, []);
+  const nextImage = () => {
+    const nextIndex = (currentIndex + 1) % images.length;
+    setCurrentImage(images[nextIndex].imgSrc);
+    setCurrentIndex(nextIndex);
+  };
+
+  const prevImage = () => {
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    setCurrentImage(images[prevIndex].imgSrc);
+    setCurrentIndex(prevIndex);
+  };
+
+  const images = [
+    {
+      imgSrc: "Andersom1.jpeg",
+      index: 1,
+      className: "section1-img-l common-img-fade",
+    },
+    {
+      imgSrc: "Andersom2.jpeg",
+      index: 2,
+      className: "section1-img-l common-img-fade",
+    },
+    {
+      imgSrc: "Andersom3.jpeg",
+      index: 3,
+      className: "section1-img-l common-img-fade",
+    },
+    {
+      imgSrc: "Andersom4.jpeg",
+      index: 4,
+      className: "section1-img-l common-img-fade",
+    },
+    {
+      imgSrc: "Andersom5.jpeg",
+      index: 5,
+      className: "section1-img-l common-img-fade",
+    },
+    {
+      imgSrc: "Andersom6.jpeg",
+      index: 6,
+      className: "section2-img-l common-img-fade",
+    },
+  ];
 
   const t = (
     <>
@@ -52,52 +114,48 @@ const LesHommesAndersom = () => {
     </>
   );
 
-  return (
-    <div ref={containerRef} className="container">
-      <div className="section section1">
-        <Marquee text={t} duration={40} />
+  const renderImage = (index) => {
+    const currImage = images.find((i) => i.index === index);
+    return (
+      currImage && (
         <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_8414-4-improved-final-kopie-min-scaled.jpg"
-          className="section1-img"
+          ref={(el) => (imageRefs.current[index] = el)}
+          src={currImage.imgSrc}
+          className={currImage.className}
+          alt={`Performance Les Homme Andersom ${index}`}
+          onClick={() => openLightbox(currImage.imgSrc, currImage.index)}
         />
-      </div>
-      <div className="section section1">
-        <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_8465finaal2-min-scaled.jpg"
-          className="section1-img"
-        />
-      </div>
-      <div className="section section1">
-        <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_8018afg-min-1-scaled.jpg"
-          className="section1-img"
-        />
-      </div>
-      <div className="section section1">
-        <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_7778reversed-bnw-min-scaled.jpg"
-          className="section1-img"
-        />
-      </div>
-      <div className="section section1">
-        <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_7937-3-glow-min-scaled.jpg"
-          className="section1-img"
-        />
-      </div>
+      )
+    );
+  };
 
-      <div className="section section1">
-        <img
-          src="https://victorverheyden.com/wp-content/uploads/2023/11/MG_7723-2-min-scaled.jpg"
-          className="section1-img"
-        />
+  return (
+    <div className="container">
+      <div className="section-l section1-l">
+        <Marquee text={t} duration={40} />
+        {renderImage(1)}
+      </div>
+      <div className="section-l section1-l">{renderImage(2)}</div>
+      <div className="section-l section1-l">{renderImage(3)}</div>
+      <div className="section-l section1-l">{renderImage(4)}</div>
+      <div className="section-l section1-l">{renderImage(5)}</div>
+
+      <div className="section-l section1-l">
+        {renderImage(6)}
         <a
           className="next-btn"
           onClick={() => handleNavigation("/matthias-geerts-morgan-lugo")}
         >
-          Next - Matthias geerts & Morgan Lugo{" "}
+          Next - Matthias geerts & Morgan Lugo
         </a>
         <ScrollToTop />
+        <Lightbox
+          isOpen={lightboxOpen}
+          image={currentImage}
+          onClose={closeLightbox}
+          onNext={nextImage}
+          onPrev={prevImage}
+        />
       </div>
     </div>
   );

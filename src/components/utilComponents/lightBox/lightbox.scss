@@ -1,0 +1,131 @@
+.lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  cursor: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 901;
+}
+
+.lightbox.active {
+  display: flex;
+}
+
+.lightbox.fade-out {
+  opacity: 0; /* Begin met een onzichtbare lightbox */
+  transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1); /* Fade-out effect */
+}
+
+.lightbox-content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.lightbox-container {
+  width: 27rem;
+}
+.lightbox-image {
+  opacity: 0; /* Begin met de afbeelding onzichtbaar */
+  transition: opacity 1s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth fade-in effect */
+  width: 100%;
+  margin: 0 auto;
+  object-fit: cover;
+}
+
+.lightbox-image.fade-in {
+  opacity: 1; /* Maak de afbeelding zichtbaar */
+}
+
+.lightbox-image:hover {
+  opacity: 0.8; /* Dim when hovering */
+  transition: opacity 0.5s ease; /* Faster transition on hover */
+}
+
+.lightbox-controls {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 30px auto;
+}
+
+.prev-button,
+.next-button {
+  background-color: transparent;
+  border: none;
+  color: black;
+  cursor: none;
+  font-size: 14px;
+  font-family: "IBM Plex Mono", monospace;
+  position: relative;
+
+  &:hover {
+    font-style: italic;
+  }
+}
+
+.prev-button::before,
+.next-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #000000;
+  transition: opacity 0.5s;
+}
+
+.prev-button::before {
+  transform: translateX(-150%) translateY(-50%);
+}
+
+.next-button::after {
+  transform: translateX(50%) translateY(-50%);
+}
+
+.prev-button:hover::before,
+.next-button:hover::after {
+  opacity: 1;
+  animation: blink 750ms infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .lightbox-container {
+    width: 100%;
+  }
+  .lightbox-image {
+    width: calc(100% - 2rem); /* Ensure controls align with image width */
+    max-width: 100%;
+
+    margin: 0 1rem; /* Add margins on smaller screens */
+  }
+
+  .lightbox-controls {
+    width: calc(100% - 2rem); /* Ensure controls align with image width */
+    max-width: 100%;
+  }
+}

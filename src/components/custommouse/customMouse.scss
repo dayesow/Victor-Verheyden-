@@ -1,12 +1,21 @@
 .app-cursor {
   z-index: 1000;
-  width: 16px;
-  height: 16px;
+  width: 20px; /* Increase size slightly */
+  height: 20px;
   overflow: hidden;
   position: fixed;
   border-radius: 50%;
-  background-color: black; /* Example style */
+  background-color: black;
   color: black;
   pointer-events: none;
   transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  /* Tablet breakpoint */
+  .app-cursor {
+    display: none;
+    color: white;
+    cursor: default;
+  }
 }
