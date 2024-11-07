@@ -124,6 +124,7 @@ const CollabIgorDieryck = () => {
               src={src.img1}
               alt={`Image ${src.index1}`}
               className="collab-image"
+              loading="lazy"
               onClick={() => openLightbox(src.img1, src.index1 - 1)}
             />
             <img
@@ -131,6 +132,7 @@ const CollabIgorDieryck = () => {
               src={src.img2}
               alt={`Image ${src.index2}`}
               className="collab-image"
+              loading="lazy"
               onClick={() => openLightbox(src.img2, src.index2 - 1)}
             />
           </div>

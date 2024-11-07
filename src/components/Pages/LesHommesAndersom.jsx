@@ -122,6 +122,7 @@ const LesHommesAndersom = () => {
           ref={(el) => (imageRefs.current[index] = el)}
           src={currImage.imgSrc}
           className={currImage.className}
+          loading="lazy"
           alt={`Performance Les Homme Andersom ${index}`}
           onClick={() => openLightbox(currImage.imgSrc, currImage.index)}
         />

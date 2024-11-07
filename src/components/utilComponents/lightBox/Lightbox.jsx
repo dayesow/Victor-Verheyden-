@@ -32,20 +32,31 @@ const Lightbox = ({ isOpen, image, onClose, onNext, onPrev }) => {
   if (!isOpen) return null; // Ensure component doesn't render if not open and not fading out
 
   return (
-    <div className={`lightbox active ${fadeOut ? 'fade-out' : ''}`} onClick={onClose}>
-      <div className="lightbox-content" ref={lightboxRef} onClick={(e) => e.stopPropagation()}>
+    <div
+      className={`lightbox active ${fadeOut ? "fade-out" : ""}`}
+      onClick={onClose}
+    >
+      <div
+        className="lightbox-content"
+        ref={lightboxRef}
+        onClick={(e) => e.stopPropagation()}
+      >
         <div className="lightbox-container">
-
-      
-        <img src={image} alt="Current" className={`lightbox-image ${fadeIn ? 'fade-in' : ''}`} onClick={onNext}/>
-        <div className="lightbox-controls">
-          <button className="prev-button" onClick={onPrev}>
-            Previous
-          </button>
-          <button className="next-button" onClick={onNext}>
-            Next
-          </button>
-        </div>
+          <img
+            src={image}
+            alt="Current"
+            className={`lightbox-image ${fadeIn ? "fade-in" : ""}`}
+            onClick={onNext}
+            loading="lazy"
+          />
+          <div className="lightbox-controls">
+            <button className="prev-button" onClick={onPrev}>
+              Previous
+            </button>
+            <button className="next-button" onClick={onNext}>
+              Next
+            </button>
+          </div>
         </div>
       </div>
     </div>

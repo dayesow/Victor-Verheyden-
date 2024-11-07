@@ -126,10 +126,11 @@ body {
 
 @media (max-width: 768px) {
   .common-img-fade {
-    opacity: 0;
+    opacity: 1; /* Ensure images are fully visible right away */
+    transition: none; /* Remove the fade-in transition */
   }
 
   .fade-in {
-    opacity: 1;
+    opacity: 1; /* Maintain full visibility without fading */
   }
 }

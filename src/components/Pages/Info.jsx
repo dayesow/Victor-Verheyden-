@@ -73,7 +73,11 @@ const Info = () => {
           </p>
         </div>
         <div className="img-container">
-          <img src="/Info.jpg" alt="info-picture-victor-verheyden" />
+          <img
+            src="/Info.jpg"
+            alt="info-picture-victor-verheyden"
+            loading="lazy"
+          />
         </div>
       </div>
       <div className="contact-container">

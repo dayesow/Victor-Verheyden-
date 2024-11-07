@@ -147,6 +147,7 @@ const Rodrigo = () => {
                 src={image.imgSrc}
                 className={image.className}
                 alt={image.className}
+                loading="lazy"
                 onClick={() => openLightbox(image.imgSrc, image.index)}
               />
             ))}
@@ -163,6 +164,7 @@ const Rodrigo = () => {
                 src={image.imgSrc}
                 className={image.className}
                 alt={image.className}
+                loading="lazy"
                 onClick={() => openLightbox(image.imgSrc, image.index)}
               />
             ))}

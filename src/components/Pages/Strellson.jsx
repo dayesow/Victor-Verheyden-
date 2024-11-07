@@ -105,6 +105,7 @@ const Strellson = () => {
           src={currImage.imgSrc}
           className={currImage.className}
           alt={currImage.alt}
+          loading="lazy"
           onClick={() => openLightbox(currImage.imgSrc, currImage.index)}
         />
       )

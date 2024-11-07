@@ -128,6 +128,7 @@ const JaouadAlloul = () => {
           src={currImage.imgSrc}
           className={currImage.className}
           alt={`JaouadAlloul ${index}`}
+          loading="lazy"
           onClick={() => openLightbox(currImage.imgSrc, currImage.index)}
         />
       )
