@@ -109,6 +109,9 @@ function horizontalLoop(items, config) {
 
 const WipPage = () => {
   const handleNavigation = useHandleNavigation();
+  const galleryRef = useRef(null);
+  const animationRef = useRef(null); // Create a ref to hold the animation
+
   const images = [
     "https://victorverheyden.com/wp-content/uploads/2023/11/IgorDieryck-1-Medium.jpeg",
     "https://victorverheyden.com/wp-content/uploads/2023/11/Rodrigo-1-Medium.jpeg",
@@ -120,20 +123,27 @@ const WipPage = () => {
     "https://victorverheyden.com/wp-content/uploads/2023/11/MG_7778reversed-bnw-min-scaled.jpg",
   ];
 
-  const galleryRef = useRef(null);
-
   useEffect(() => {
     const galleryItems = galleryRef.current.querySelectorAll(".marquee__item");
-    horizontalLoop(galleryItems, {
+
+    // Start the animation and store the reference
+    animationRef.current = horizontalLoop(galleryItems, {
       repeat: -1,
-      speed: 1, // Pas de snelheid aan naar wens
+      speed: 1, // Adjust speed if needed
     });
-  }, [handleNavigation]);
+
+    // Cleanup function to stop the animation when the component is unmounted or handleNavigation changes
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill(); // Stop the GSAP animation
+      }
+    };
+  }, [handleNavigation, animationRef]); // Depend on `handleNavigation` to reset animation if necessary
 
   const t = (
     <>
       <b> So Close Yet So Far From Paradise </b> - Work in progress - Unfolded
-      during Covid, reflecting on emotions, freedom and the endless search for
+      during Covid, reflecting on emotions, freedom, and the endless search for
       paradise -<b> So Close Yet So Far From Paradise </b> - Work in progress -
       Unfolded during Covid, reflecting on emotions, freedom and the endless
       search for paradise -
@@ -146,7 +156,7 @@ const WipPage = () => {
       <div className="gallery" ref={galleryRef}>
         {images.concat(images).map((image, index) => (
           <img
-            className="marquee__item" // Voeg deze klasse toe voor de loop
+            className="marquee__item" // Add this class for the loop
             key={index}
             src={image}
             alt={`Gallery Image ${index}`}
