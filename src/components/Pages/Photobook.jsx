@@ -7,11 +7,9 @@ const Photobook = () => {
   const handleNavigation = useHandleNavigation();
   const t = (
     <>
-      <b> Portrait of an artist, Jaouad Alloul </b> - Date, sept. 2021 - Model,
-      Jaouad Alloul - Assistance, Charlot Machiels-Didelez - Location, Brussels
-      - <b>Portrait of an artist, Jaouad Alloul </b> - Date, sept. 2021 - Model,
-      Jaouad Alloul - Assistance, Charlot Machiels-Didelez - Location, Brussels
-      -
+      <b> Photobook Playtime</b> - realised sept. 2020 - Edition of 20 books -
+      90 pages - 45 x 45 cm - <b> Photobook Playtime</b> - realised sept. 2020 -
+      Edition of 20 books - 90 pages - 45 x 45 cm -
     </>
   );
 

@@ -1,0 +1,24 @@
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  width: 100%;
+  position: absolute;
+  top: 5rem;
+}
+
+.marquee-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 400;
+
+  > span {
+    font-size: 12px;
+    font-weight: 400;
+
+    @media (max-width: 768px) {
+      font-size: 12px;
+      font-weight: 400;
+    }
+  }
+}

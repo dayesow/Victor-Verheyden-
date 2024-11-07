@@ -43,7 +43,10 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home toggleMenu={toggleMenu} />} />
           <Route index element={<Home />} />
-          <Route path="/collab-igor-dieryck" element={<CollabIgorDieryck />} />
+          <Route
+            path="/collaboration-with-igordieryck"
+            element={<CollabIgorDieryck />}
+          />
           <Route
             path="/portrait-of-an-artist-jaouad-alloul"
             element={<JaouadAlloul />}
@@ -53,7 +56,10 @@ function App() {
             element={<LesHommesAndersom />}
           />
           <Route path="/matthias-geerts-morgan-lugo" element={<Strellson />} />
-          <Route path="/rodrigo" element={<Rodrigo />} />
+          <Route
+            path="/portrait-of-a-writer-rodrigo-costa-ribeiro"
+            element={<Rodrigo />}
+          />
           <Route path="/wip" element={<WipPage />} />
           <Route path="/playtime-photobook" element={<Photobook />} />
           <Route path="/info" element={<Info />} />

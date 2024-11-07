@@ -8,14 +8,18 @@
   height: 0;
   overflow: hidden;
   transition:
-    height 1.5s ease,
-    opacity 1.5s ease; // Consistentie hier
+    height 0.8s ease,
+    opacity 0.8s ease; // Consistentie hier
   opacity: 0;
 }
 
 .menu-container.open {
   height: 80vh;
   opacity: 1;
+
+  @media (max-width: 768px) {
+    height: 80vh;
+  }
 }
 
 .menu-container.closed {
@@ -66,20 +70,20 @@
   visibility: hidden;
   z-index: 902;
   transition:
-    opacity 1.5s ease,
-    visibility 0s 1.5s ease; /* Verander de tijdsduur naar 0.5s om te passen bij het menu */
+    opacity 0.8s ease,
+    visibility 0s 0.8s ease; /* Verander de tijdsduur naar 0.5s om te passen bij het menu */
 
   &.visible {
     opacity: 1;
     visibility: visible;
     transition:
-      opacity 1.5s ease,
+      opacity 0.8s ease,
       visibility 0s; /* Smooth fade-in */
   }
   &.closing {
     transition:
-      opacity 1.5s ease,
-      visibility 0s 1.5s ease; /* Consistent met de andere animaties */
+      opacity 0.8s ease,
+      visibility 0s 0.8s ease; /* Consistent met de andere animaties */
     opacity: 0;
     visibility: hidden;
   }

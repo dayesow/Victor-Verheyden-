@@ -1,6 +1,8 @@
-import React, { useRef, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import "./Marquee.scss"; // Import the SCSS file
 
+// eslint-disable-next-line react/prop-types
 const Marquee = ({ text, duration }) => {
   const marqueeRef = useRef(null);
 
@@ -11,12 +13,12 @@ const Marquee = ({ text, duration }) => {
     const animateMarquee = () => {
       gsap.fromTo(
         marquee,
-        { x: 0 }, // Start buiten het scherm rechts
+        { x: 0 },
         {
-          x: -marqueeWidth / 2, // Beweeg naar links buiten het scherm
+          x: -marqueeWidth / 2,
           ease: "none",
           duration,
-          repeat: -1, // Zorgt voor een continue herhaling
+          repeat: -1,
         }
       );
     };
@@ -29,24 +31,8 @@ const Marquee = ({ text, duration }) => {
   }, []);
 
   return (
-    <div
-      style={{
-        overflow: "hidden",
-        whiteSpace: "nowrap",
-        width: "100%",
-        position: "absolute",
-        top: "5rem",
-      }}
-    >
-      <div
-        ref={marqueeRef}
-        style={{
-          display: "inline-block",
-          whiteSpace: "nowrap",
-          fontSize: "12px",
-          fontWeight: "400",
-        }}
-      >
+    <div className="marquee-container">
+      <div ref={marqueeRef} className="marquee-text">
         <span>{text}</span>
         <span>{text}</span>
       </div>

@@ -135,7 +135,12 @@ const CollabIgorDieryck = () => {
             />
           </div>
         ))}
-        <a className="next-btn" onClick={() => handleNavigation("/rodrigo")}>
+        <a
+          className="next-btn"
+          onClick={() =>
+            handleNavigation("/portrait-of-a-writer-rodrigo-costa-ribeiro")
+          }
+        >
           Next - Portrait of an artist Rodrigo
         </a>
         <ScrollToTop />

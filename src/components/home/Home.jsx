@@ -57,13 +57,13 @@ const Home = ({ toggleMenu }) => {
         <div className="tooltips-container" ref={containerRef}>
           {[
             {
-              href: "/collab-igor-dieryck",
+              href: "/collaboration-with-igordieryck",
               imgSrc: "/HomeIgorDieryck.jpeg",
               alt: "Collab Igor Dieryck",
               title: "Collab - Igor Dieryck",
             },
             {
-              href: "/rodrigo",
+              href: "/portrait-of-a-writer-rodrigo-costa-ribeiro",
               imgSrc: "/HomeRodrigo.jpeg",
               alt: "Rodrigo Costa Ribeiro",
               title: "Portrait of a writer Rodrigo Costa Ribeiro",
@@ -81,7 +81,7 @@ const Home = ({ toggleMenu }) => {
               title: "Portrait of an artist Jaouad Alloul",
             },
             {
-              href: "https://victorverheyden.com/photobook-playtime/",
+              href: "/playtime-photobook",
               imgSrc: "/HomePhotobook.jpeg",
               alt: "Playtime Photobook",
               title: "Playtime Photobook",

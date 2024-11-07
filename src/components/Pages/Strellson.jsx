@@ -14,7 +14,7 @@ const Strellson = () => {
   const handleNavigation = useHandleNavigation();
   const t = (
     <>
-      <b>Matthias Geerts & Morgan Lugo for Strellson </b> - Date, okt.2023 -
+      <b> Matthias Geerts & Morgan Lugo for Strellson </b> - Date, okt.2023 -
       Location, Brussels - <b> Matthias Geerts & Morgan Lugo for Strellson </b>-
       Date, okt.2023 - Location, Brussels -
     </>
@@ -119,7 +119,7 @@ const Strellson = () => {
         {renderImage(2)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/collab-igor-dieryck")}
+          onClick={() => handleNavigation("/collaboration-with-igordieryck")}
         >
           Next - Collaboration w. Igor Dieryck
         </a>

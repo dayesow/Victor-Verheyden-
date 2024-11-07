@@ -10,9 +10,12 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
 
   // Define your menu items and paths
   const menuItems = [
-    { path: "/collab-igor-dieryck", label: "Collaboration w. Igor Dieryck" },
     {
-      path: "/rodrigo",
+      path: "/collaboration-with-igordieryck",
+      label: "Collaboration w. Igor Dieryck",
+    },
+    {
+      path: "/portrait-of-a-writer-rodrigo-costa-ribeiro",
       label: "Portrait of a writer, Rodrigo Costa Ribeiro",
     },
     {
@@ -72,7 +75,9 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
           <h2>
             <a
               className={`menu-btn ${
-                location.pathname === "/home" ? "active" : ""
+                location.pathname === "/home" || location.pathname === "/"
+                  ? "active"
+                  : ""
               }`}
               onClick={() => handleMenuNavigation("/home")}
             >

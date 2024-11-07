@@ -128,4 +128,9 @@
     width: calc(100% - 2rem); /* Ensure controls align with image width */
     max-width: 100%;
   }
+
+  .prev-button::before,
+  .next-button::after {
+    display: none;
+  }
 }
