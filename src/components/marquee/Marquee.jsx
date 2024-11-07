@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import "./Marquee.scss"; // Import the SCSS file
+import "./marquee.scss"; // Import the SCSS file
 
 // eslint-disable-next-line react/prop-types
 const Marquee = ({ text, duration }) => {
