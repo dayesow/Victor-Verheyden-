@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./components/home/Home";
 import { Route, Routes, useLocation } from "react-router-dom";
 import CustomMouse from "./components/custommouse/CustomMouse";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Preloader from "./components/preloader/Preloader";
 import Header from "./components/header/Header";
 import CollabIgorDieryck from "./components/Pages/CollabIgorDieryck";
@@ -29,6 +29,20 @@ function App() {
     setMenuOpen(!isMenuOpen);
   };
   const handlePreloaderFinish = () => setShowPreloader(false);
+
+  useEffect(() => {
+    const style = `
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 12px;
+      color: #000;
+      background-color: #ffffff;
+      padding: 10px;
+      border: 0.2px solid #000;
+    `;
+
+    console.log("%cDesign by Victor Verheyden", style);
+    console.log("%cDeveloped by Daye Sow", style);
+  }, []);
 
   return (
     <>

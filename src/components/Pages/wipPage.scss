@@ -15,12 +15,13 @@
 }
 
 .gallery {
-  display: flex; /* Gebruikt flexbox om de afbeeldingen horizontaal uit te lijnen */
-  width: max-content; /* Zorgt ervoor dat de breedte van de gallery wordt bepaald door de inhoud */
+  display: flex; /* Aligns the images horizontally */
+  width: max-content; /* Ensures the width is based on the content */
+  will-change: transform; /* Helps to improve performance during animation */
 }
 
 .gallery img {
-  height: 250px; /* Stelt de hoogte van de afbeeldingen in */
-  object-fit: cover; /* Zorgt ervoor dat de afbeeldingen hun aspect ratio behouden en de container vullen */
-  margin-right: 5px; /* Voeg wat ruimte toe tussen de afbeeldingen */
+  height: 250px; /* Sets the height of the images */
+  object-fit: cover; /* Ensures the images maintain aspect ratio and fill the container */
+  margin-right: 5px; /* Adds space between the images */
 }

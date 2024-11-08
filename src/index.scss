@@ -133,4 +133,7 @@ body {
   .fade-in {
     opacity: 1; /* Maintain full visibility without fading */
   }
+  body {
+    -webkit-text-size-adjust: 100%; /* Prevents font scaling on iPhones */
+  }
 }

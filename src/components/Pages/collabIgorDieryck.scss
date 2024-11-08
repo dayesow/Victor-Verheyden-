@@ -47,9 +47,3 @@
   opacity: 0;
   transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1); /* Smooth fade-in effect */
 }
-
-@media screen and (max-device-width: 480px) {
-  body {
-    -webkit-text-size-adjust: 100%; /* Prevents font scaling on iPhones */
-  }
-}
