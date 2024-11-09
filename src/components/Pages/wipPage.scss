@@ -1,9 +1,7 @@
 .wippage-section {
   height: 100vh;
   width: 100%;
-  margin: 0;
   overflow: hidden;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,24 +12,20 @@
   }
 }
 
-.gallery {
-  display: flex;
-  width: max-content; // de breedte wordt bepaald door de inhoud
-  will-change: transform; // verbetert prestaties tijdens animatie
-}
-
 .wrapper {
   width: 100%;
-  height: auto;
-  position: relative;
-  margin: auto;
-  background: #ccc;
   overflow: hidden;
+  background: #ffffff;
+}
+
+.gallery {
+  display: flex;
+  width: max-content; // Allow gallery width to be dynamically defined by content
+  will-change: transform; // Optimizes for smooth animation
 }
 
 .marquee__item {
-  width: auto; // stel breedte in voor elke afbeelding
-  height: 250px; // stel hoogte in voor elke afbeelding
-  object-fit: cover; // zorgt dat afbeeldingen proportioneel worden weergegeven
-  margin-right: 5px; // ruimte tussen afbeeldingen
+  height: 250px; // Set consistent height
+  object-fit: cover; // Maintain aspect ratio without fixed width
+  margin-right: 5px;
 }
