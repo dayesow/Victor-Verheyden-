@@ -15,13 +15,23 @@
 }
 
 .gallery {
-  display: flex; /* Aligns the images horizontally */
-  width: max-content; /* Ensures the width is based on the content */
-  will-change: transform; /* Helps to improve performance during animation */
+  display: flex;
+  width: max-content; // de breedte wordt bepaald door de inhoud
+  will-change: transform; // verbetert prestaties tijdens animatie
 }
 
-.gallery img {
-  height: 250px; /* Sets the height of the images */
-  object-fit: cover; /* Ensures the images maintain aspect ratio and fill the container */
-  margin-right: 5px; /* Adds space between the images */
+.wrapper {
+  width: 100%;
+  height: auto;
+  position: relative;
+  margin: auto;
+  background: #ccc;
+  overflow: hidden;
+}
+
+.marquee__item {
+  width: auto; // stel breedte in voor elke afbeelding
+  height: 250px; // stel hoogte in voor elke afbeelding
+  object-fit: cover; // zorgt dat afbeeldingen proportioneel worden weergegeven
+  margin-right: 5px; // ruimte tussen afbeeldingen
 }

@@ -12,7 +12,7 @@
   @media (max-width: 768px) {
     width: calc(100% - 1.5rem);
     overflow-y: hidden !important;
-    height: 100dvh !important;
+    height: 100vh;
   }
 
   .react-player {
@@ -21,7 +21,7 @@
     overflow: hidden;
     @media (max-width: 768px) {
       padding-top: 0.5rem;
-      height: 200px;
+      height: 180px;
       margin-bottom: 1.5rem;
     }
   }
@@ -31,7 +31,7 @@
     text-align: center;
 
     @media (max-width: 768px) {
-      padding-bottom: 2rem;
+      padding-bottom: 3rem;
     }
   }
 }
