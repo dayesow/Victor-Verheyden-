@@ -69,7 +69,7 @@ const WipPage = () => {
       { x: 0 },
       {
         x: -totalWidth / 2,
-        duration: galleryItems.length * 1, // Adjust speed here
+        duration: galleryItems.length * 2, // Adjust speed here
         ease: "linear",
         repeat: -1,
         modifiers: {
