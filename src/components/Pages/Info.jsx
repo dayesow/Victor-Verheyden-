@@ -5,7 +5,7 @@ import { FaInstagram } from "react-icons/fa";
 const Info = () => {
   const [buttonText, setButtonText] = useState("Copy my email address");
   const [age, setAge] = useState(0);
-  const textRefs = useRef([]); // Array to hold references to all paragraphs
+  const textRefs = useRef([]);
 
   const calculateAge = (birthDate) => {
     const today = new Date();
@@ -24,19 +24,6 @@ const Info = () => {
     setAge(calculateAge(birthDate));
   }, []);
 
-  useEffect(() => {
-    // Timeout to allow the fade-in effect
-    const timer = setTimeout(() => {
-      textRefs.current.forEach((ref) => {
-        if (ref) {
-          ref.classList.add("fade-in"); // Add 'fade-in' class to trigger opacity transition
-        }
-      });
-    }, 1250); // Adjust delay if necessary
-
-    return () => clearTimeout(timer); // Clean up timeout on unmount
-  }, []);
-
   const handleCopyEmail = async () => {
     try {
       await navigator.clipboard.writeText("victorverheyden@gmail.com");
@@ -51,7 +38,7 @@ const Info = () => {
 
   return (
     <section className="info-main">
-      <div className="first-container">
+      <div className="grid-container">
         <div className="info-text">
           <p ref={(el) => (textRefs.current[0] = el)}>
             Victor Verheyden is a {age}-year-old photographer from Antwerp,
@@ -74,24 +61,35 @@ const Info = () => {
         </div>
         <div className="img-container">
           <img
-            src="/Info.jpg"
+            src="/NewInfo.jpeg"
             alt="info-picture-victor-verheyden"
             loading="lazy"
           />
+          <button
+            className="email-button"
+            onClick={() =>
+              (window.location.href = "https://www.yentlgijbels.com/")
+            }
+          >
+            Credits: Yentl Gijbels
+          </button>
         </div>
-      </div>
-      <div className="contact-container">
-        <button className="email-button" onClick={handleCopyEmail}>
-          {buttonText}
-        </button>
-        <a
-          href="https://www.instagram.com/victor_verheyden/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="email-button"
-        >
-          <FaInstagram size={25} style={{ color: "black", display: "flex" }} />
-        </a>
+        <div className="contact-container">
+          <button className="email-button" onClick={handleCopyEmail}>
+            {buttonText}
+          </button>
+          <a
+            href="https://www.instagram.com/victor_verheyden/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="email-button"
+          >
+            <FaInstagram
+              size={25}
+              style={{ color: "black", display: "flex" }}
+            />
+          </a>
+        </div>
       </div>
     </section>
   );

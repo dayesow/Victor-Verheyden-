@@ -1,67 +1,89 @@
 .info-main {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   width: 80%;
   margin: 0 auto;
-  cursor: none;
 
   @media (max-width: 768px) {
     width: calc(100% - 2.5rem);
     justify-content: flex-start;
   }
 
-  .first-container {
-    display: flex;
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(
+      12,
+      1fr
+    ); /* 12 kolommen van gelijke breedte */
+    grid-template-rows: 12; /* Automatisch aantal rijen gebaseerd op content */
+    // gap: 2rem;
     width: 100%;
-    align-items: flex-start;
-    gap: 100px;
 
     @media (max-width: 768px) {
-      flex-direction: column;
-      width: 100%;
-      gap: 2rem;
+      grid-template-columns: 1fr;
     }
 
     .info-text {
-      padding-top: 4rem;
-      width: 55%;
+      margin-top: 8rem;
+      grid-column: 1 / span 6; /* Start op kolom 1 en neemt 6 kolommen in beslag */
+      grid-row: 1 / span 2; /* Eerste rij */
 
       @media (max-width: 768px) {
+        grid-column: 1 / span 1;
+        grid-row: 1;
         padding-top: 5rem;
         width: 100%;
+        margin-top: 0rem;
       }
 
       > p {
         color: black;
         font-size: 12px;
-        line-height: 24px;
         line-height: 18px;
         font-weight: 400;
         margin-bottom: 1rem;
-        opacity: 0;
+        opacity: 1;
         transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-      }
-      .fade-in {
-        opacity: 1; /* Change to 1 when class is added */
       }
     }
 
     .img-container {
-      width: 45%;
+      grid-column: 8 / span 5; /* Start op kolom 7 en neemt 6 kolommen in beslag */
+      grid-row: 1 / span 2; /* Eerste rij */
+      width: 100%;
 
       @media (max-width: 768px) {
-        width: 100%;
-        margin-bottom: 5rem;
+        grid-column: 1 / span 1;
+        grid-row: 2;
+        margin-bottom: 3rem;
       }
 
       > img {
         object-fit: contain;
         height: 100%;
         width: 100%;
+      }
+    }
+
+    .contact-container {
+      margin-top: 6rem;
+      grid-column: 1 / span 6; /* Start op kolom 1 en neemt 6 kolommen in beslag */
+      grid-row: 2 / span 3; /* Tweede rij */
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.5rem;
+
+      @media (max-width: 768px) {
+        grid-column: 1 / span 1;
+        grid-row: 3;
+        padding-bottom: 3rem;
+        margin-top: 0rem;
       }
     }
   }
@@ -101,18 +123,6 @@
   opacity: 1;
   animation: blink 750ms infinite;
 }
-
-.contact-container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1.5rem;
-
-  @media (max-width: 768px) {
-    padding-bottom: 3rem;
-  }
-}
-
 @keyframes blink {
   0% {
     opacity: 1;

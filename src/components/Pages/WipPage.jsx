@@ -107,7 +107,7 @@ const WipPage = () => {
       </div>
       <a
         className="next-btn"
-        onClick={() => handleNavigation("/portrait-of-an-artist-jaouad-alloul")}
+        onClick={() => handleNavigation("/playtime-photobook")}
       >
         Next - Portrait of an artist Jaoud Alloul
       </a>

@@ -18,7 +18,7 @@ const Photobook = () => {
       <Marquee text={t} duration={40} />
 
       <ReactPlayer
-        url="https://www.youtube.com/watch?v=fHA1fw0jPSk"
+        url="https://www.youtube.com/watch?v=0CHg6TalcBY"
         className="react-player"
         controls={true} // Hiermee toon je de YouTube-bedieningselementen (pauze, ondertiteling, etc.)
         config={{
@@ -39,7 +39,10 @@ const Photobook = () => {
         dominant presence of color in the photos. It is a personal thesis that
         brings shape to the image I made.
       </p>
-      <a className="next-btn" onClick={() => handleNavigation("/wip")}>
+      <a
+        className="next-btn"
+        onClick={() => handleNavigation("/performance-les-hommes-andersom")}
+      >
         Next - Performance, Les Homme Andersom
       </a>
     </div>

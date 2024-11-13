@@ -24,6 +24,13 @@ function App() {
   const location = useLocation();
   const isHome = location.pathname === "/home" || location.pathname === "/";
 
+  useEffect(() => {
+    const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
+    if (!hasVisitedBefore && isHome) {
+      setShowPreloader(true);
+      localStorage.setItem("hasVisitedBefore", "true");
+    }
+  }, [isHome]);
   // Function to toggle the menu open/close state
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);

@@ -41,6 +41,9 @@ const Lightbox = ({ isOpen, image, onClose, onNext, onPrev }) => {
         ref={lightboxRef}
         onClick={(e) => e.stopPropagation()}
       >
+        <a className="close-btn-lightbox" onClick={onClose}>
+          <span>x</span>
+        </a>
         <div className="lightbox-container">
           <img
             src={image}

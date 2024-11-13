@@ -12,7 +12,7 @@
     max-width: calc(100% - 1.5rem);
     height: 100%;
     padding-top: 5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 4rem;
     overflow-x: hidden;
   }
 }
@@ -55,7 +55,7 @@
     margin: 0;
     text-align: center;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 12px;
     font-family: "IBM Plex Mono", monospace;
     color: black;
   }
@@ -87,7 +87,7 @@
     overflow-x: hidden;
 
     position: fixed;
-    bottom: 10px;
+    bottom: 20px;
   }
 
   a {

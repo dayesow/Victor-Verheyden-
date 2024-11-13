@@ -4,6 +4,10 @@
   width: 100%;
   position: absolute;
   top: 5rem;
+
+  @media (max-width: 768px) {
+    top: 4.5rem;
+  }
 }
 
 .marquee-text {

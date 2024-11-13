@@ -133,6 +133,11 @@ body {
   .fade-in {
     opacity: 1; /* Maintain full visibility without fading */
   }
+
+  .fade-in:hover {
+    opacity: 1; /* Dim when hovering */
+    transition: opacity 0.5s ease; /* Faster transition on hover */
+  }
   body {
     -webkit-text-size-adjust: 100%; /* Prevents font scaling on iPhones */
   }

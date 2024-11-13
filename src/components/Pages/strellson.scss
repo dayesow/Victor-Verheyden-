@@ -16,13 +16,13 @@
     max-width: 100%;
     width: 100%;
     height: 100%;
-    padding: 0.5rem 0;
+    padding: 0.25rem 0;
   }
 }
 
 @media (max-width: 768px) {
   .section2-st:first-child {
-    padding-top: 8rem; /* Adjust as needed */
+    padding-top: 7rem; /* Adjust as needed */
   }
 
   .section2-st:last-child {
@@ -33,7 +33,7 @@
 .section2-st {
   gap: 16px;
   @media (max-width: 768px) {
-    gap: 1rem;
+    gap: 0.4rem;
   }
 }
 

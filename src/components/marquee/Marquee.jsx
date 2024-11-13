@@ -1,23 +1,29 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
-import "./marquee.scss"; // Import the SCSS file
+import "./marquee.scss";
 
 // eslint-disable-next-line react/prop-types
 const Marquee = ({ text, duration }) => {
   const marqueeRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const marquee = marqueeRef.current;
+    const container = containerRef.current;
     const marqueeWidth = marquee.offsetWidth;
+    const containerWidth = container.offsetWidth;
+
+    // Bereken de tijdsduur gebaseerd op de snelheid (in pixels per seconde)
+    const calculatedDuration = (marqueeWidth + containerWidth) / duration;
 
     const animateMarquee = () => {
       gsap.fromTo(
         marquee,
         { x: 0 },
         {
-          x: -marqueeWidth / 2,
+          x: -marqueeWidth,
           ease: "none",
-          duration,
+          duration: calculatedDuration,
           repeat: -1,
         }
       );
@@ -28,10 +34,10 @@ const Marquee = ({ text, duration }) => {
     return () => {
       gsap.killTweensOf(marquee);
     };
-  }, []);
+  }, [duration]);
 
   return (
-    <div className="marquee-container">
+    <div ref={containerRef} className="marquee-container">
       <div ref={marqueeRef} className="marquee-text">
         <span>{text}</span>
         <span>{text}</span>
