@@ -11,17 +11,18 @@ const WipPage = () => {
 
   const images = useMemo(
     () => [
+      "/HomePhotobook.jpeg",
+      "/Andersom4.jpeg",
+      "/Wip1.jpeg",
+      "/Wip2.jpeg",
+      "/Wip3.jpeg",
+      "/Wip4.jpeg",
+      "/Wip5.jpeg",
+      "/Wip6.jpeg",
+      "/Wip7.jpeg",
+      "/Wip8.jpeg",
+      "/Wip9.jpeg",
       "/Andersom1.jpeg",
-      "/IgorDieryck1.jpeg",
-      "/Jaouad1.jpeg",
-      "/Rodrigo1.jpeg",
-      "/Strellson1.jpeg",
-      "/Andersom2.jpeg",
-      "/IgorDieryck2.jpeg",
-      "/Jaouad2.jpeg",
-      "/Andersom3.jpeg",
-      "/Rodrigo2.jpeg",
-      "/IgorDieryck8.jpeg",
     ],
     []
   );

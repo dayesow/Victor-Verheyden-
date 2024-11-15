@@ -93,7 +93,7 @@ const Home = ({ toggleMenu }) => {
               key={index}
             >
               <div>
-                <img src={imgSrc} alt={alt} className="dot" />
+                <img src={imgSrc} alt={alt} className="dot" loading="lazy" />
                 <div className="content">
                   <h1>{title}</h1>
                 </div>

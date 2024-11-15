@@ -7,32 +7,35 @@ const Photobook = () => {
   const handleNavigation = useHandleNavigation();
   const t = (
     <>
-      <b> Photobook Playtime</b> - realised sept. 2020 - Edition of 20 books -
-      90 pages - 45 x 45 cm - <b> Photobook Playtime</b> - realised sept. 2020 -
-      Edition of 20 books - 90 pages - 45 x 45 cm -
+      <b> Photobook Playtime</b> - realized sept. 2020 - Edition of 20 books -
+      90 pages - 45 x 45 cm - <b> Photobook Playtime</b> - realized sept. 2020 -
+      Edition of 20 books - 90 pages - 45 x 45 cm - <b> Photobook Playtime</b> -
+      realized sept. 2020 - Edition of 20 books - 90 pages - 45 x 45 cm -
     </>
   );
 
   return (
     <div className="photobook-container">
       <Marquee text={t} duration={40} />
-
-      <ReactPlayer
-        url="https://www.youtube.com/watch?v=0CHg6TalcBY"
-        className="react-player"
-        controls={true} // Hiermee toon je de YouTube-bedieningselementen (pauze, ondertiteling, etc.)
-        config={{
-          youtube: {
-            playerVars: {
-              cc_load_policy: 1, // Hiermee schakel je ondertiteling standaard in
-              modestbranding: 1, // Verwijdert het YouTube-logo uit de bedieningsbalk
-              rel: 0, // Hiermee voorkom je dat er gerelateerde video's worden getoond aan het einde
+      <div className="react-player-wrapper">
+        <ReactPlayer
+          url="https://www.youtube.com/watch?v=0CHg6TalcBY"
+          className="react-player"
+          controls={true}
+          config={{
+            youtube: {
+              playerVars: {
+                cc_load_policy: 1,
+                modestbranding: 1,
+                rel: 0,
+              },
             },
-          },
-        }}
-        width={"100%"}
-        // height={240}
-      />
+          }}
+          width="100%"
+          height="100%"
+        />
+      </div>
+
       <p>
         This book is a collection of photos from the past years.
         &quot;Playtime&quot; symbolizes my playful way of working and the
