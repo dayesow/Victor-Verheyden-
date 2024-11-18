@@ -25,6 +25,7 @@
   margin: 0 auto;
   @media (max-width: 768px) {
     flex-direction: column;
+    height: 100%;
     align-items: center;
     overflow-x: hidden;
     width: 100%;

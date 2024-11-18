@@ -5,39 +5,30 @@ import "./marquee.scss";
 // eslint-disable-next-line react/prop-types
 const Marquee = ({ text, duration }) => {
   const marqueeRef = useRef(null);
-  const containerRef = useRef(null);
 
   useEffect(() => {
     const marquee = marqueeRef.current;
-    const container = containerRef.current;
-    const marqueeWidth = marquee.offsetWidth;
-    const containerWidth = container.offsetWidth;
 
-    // Bereken de tijdsduur gebaseerd op de snelheid (in pixels per seconde)
-    const calculatedDuration = (marqueeWidth + containerWidth) / duration;
+    // Naadloze animatie zonder pauzes
+    const totalWidth = marquee.scrollWidth; // De totale breedte van de marquee
+    const tl = gsap.timeline({ repeat: -1, defaults: { ease: "none" } });
 
-    const animateMarquee = () => {
-      gsap.fromTo(
-        marquee,
-        { x: 0 },
-        {
-          x: -marqueeWidth,
-          ease: "none",
-          duration: calculatedDuration,
-          repeat: -1,
-        }
-      );
-    };
+    // Clone de tekst om het effect van een naadloze loop te krijgen
+    const cloneSpan = marquee.querySelector("span").cloneNode(true);
+    marquee.appendChild(cloneSpan);
 
-    animateMarquee();
+    tl.to(marquee, {
+      x: -totalWidth / 2, // Verplaats de marquee naar links voor een naadloos effect
+      duration: duration * 1.5,
+    });
 
     return () => {
-      gsap.killTweensOf(marquee);
+      tl.kill(); // Stop animatie bij unmount
     };
   }, [duration]);
 
   return (
-    <div ref={containerRef} className="marquee-container">
+    <div className="marquee-container">
       <div ref={marqueeRef} className="marquee-text">
         <span>{text}</span>
         <span>{text}</span>
