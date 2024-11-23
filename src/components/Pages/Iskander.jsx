@@ -2,11 +2,13 @@
 import { useEffect, useRef, useState } from "react";
 import Marquee from "../marquee/Marquee";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
-import "./strellson.scss";
+
 import Lightbox from "../utilComponents/lightBox/Lightbox";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 
-const Strellson = () => {
+import "./iskander.scss";
+
+const Iskander = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
@@ -14,9 +16,9 @@ const Strellson = () => {
   const handleNavigation = useHandleNavigation();
   const t = (
     <>
-      <b> Matthias Geerts & Morgan Lugo for Strellson </b> - Date, okt.2023 -
-      Location, Brussels - <b> Matthias Geerts & Morgan Lugo for Strellson </b>-
-      Date, okt.2023 - Location, Brussels -
+      <b> Portrait of an artist, Iskander Moon </b> - Date, Jul. 2024 -
+      Location, Antwerp - <b> Portrait of an artist, Iskander Moon </b> - Date,
+      Jul. 2024 - Location, Antwerp -
     </>
   );
 
@@ -51,16 +53,22 @@ const Strellson = () => {
 
   const images = [
     {
-      imgSrc: "/Strellson1.jpeg",
-      className: "section2-img-st common-img-fade",
-      alt: "Strellson_1",
+      imgSrc: "/iskander1.jpeg",
+      className: "section2-img-is common-img-fade",
+      alt: "Iskander",
       index: 1,
     },
     {
-      imgSrc: "/Strellson2.jpeg",
-      className: "section2-img-st common-img-fade",
-      alt: "Strellson_2",
+      imgSrc: "/iskander2.jpeg",
+      className: "section2-img-is common-img-fade",
+      alt: "Iskander",
       index: 2,
+    },
+    {
+      imgSrc: "/iskander3.jpeg",
+      className: "section2-img-is common-img-fade",
+      alt: "Iskander",
+      index: 3,
     },
   ];
 
@@ -114,15 +122,16 @@ const Strellson = () => {
 
   return (
     <div>
-      <div className="section2-st">
+      <div className="section2-is">
         <Marquee text={t} duration={40} />
         {renderImage(1)}
         {renderImage(2)}
+        {renderImage(3)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/iskander-moon")}
+          onClick={() => handleNavigation("/collaboration-with-igordieryck")}
         >
-          Next - Iskander - Moon
+          Next - Collaboration w. Igor Dieryck
         </a>
         <ScrollToTop />
         <Lightbox
@@ -137,4 +146,4 @@ const Strellson = () => {
   );
 };
 
-export default Strellson;
+export default Iskander;

@@ -16,6 +16,7 @@ import WipPage from "./components/Pages/WipPage";
 import Menu from "./components/menu/Menu";
 import Info from "./components/Pages/Info";
 import Photobook from "./components/Pages/Photobook";
+import Iskander from "./components/Pages/Iskander";
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -84,6 +85,7 @@ function App() {
           <Route path="/wip" element={<WipPage />} />
           <Route path="/playtime-photobook" element={<Photobook />} />
           <Route path="/info" element={<Info />} />
+          <Route path="/iskander-moon" element={<Iskander />} />
         </Routes>
       </PageTransition>
     </>

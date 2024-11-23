@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import "./lightbox.scss";
+import XIcon from "./Xicon";
 
 // eslint-disable-next-line react/prop-types
 const Lightbox = ({ isOpen, image, onClose, onNext, onPrev }) => {
@@ -42,7 +43,7 @@ const Lightbox = ({ isOpen, image, onClose, onNext, onPrev }) => {
         onClick={(e) => e.stopPropagation()}
       >
         <a className="close-btn-lightbox" onClick={onClose}>
-          <span>x</span>
+          <XIcon size={20} color="black" lineWidth={0.75} />
         </a>
         <div className="lightbox-container">
           <img

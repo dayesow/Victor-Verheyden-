@@ -152,7 +152,10 @@ const JaouadAlloul = () => {
       </div>
       <div className="section-j section1-j">
         {renderImage(7)}
-        <a className="next-btn" onClick={() => handleNavigation("/wip")}>
+        <a
+          className="next-btn"
+          onClick={() => handleNavigation("/playtime-photobook")}
+        >
           Next - Playtime Photobook
         </a>
         <ScrollToTop />

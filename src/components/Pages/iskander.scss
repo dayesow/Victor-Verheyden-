@@ -1,0 +1,49 @@
+.section2-is {
+  position: relative;
+  height: 100vh; /* Vult het volledige venster */
+  width: 100%;
+  overflow: hidden;
+  background-color: white;
+  margin: 0;
+  display: flex;
+  justify-content: center; /* Zorgt voor horizontale centrering */
+  align-items: center; /* Zorgt voor verticale centrering */
+
+  @media (max-width: 768px) {
+    overflow: auto;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    padding: 0.25rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section2-is:first-child {
+    padding-top: 7rem; /* Adjust as needed */
+  }
+
+  .section2-is:last-child {
+    padding-bottom: 6rem; /* Adjust as needed */
+  }
+}
+
+.section2-is {
+  gap: 100px;
+  @media (max-width: 768px) {
+    gap: 0.4rem;
+  }
+}
+
+.section2-img-is {
+  height: 50%;
+  max-height: 100%;
+  object-fit: cover; /* Zorgt ervoor dat de afbeelding zijn verhoudingen behoudt */
+
+  @media (max-width: 768px) {
+    width: calc(100% - 1.5rem);
+    height: 100%;
+  }
+}

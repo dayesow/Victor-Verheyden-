@@ -32,6 +32,10 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
       path: "/matthias-geerts-morgan-lugo",
       label: "Matthias Geerts & Morgan Lugo for Strellson",
     },
+    {
+      path: "/iskander-moon",
+      label: "Iskander Moon",
+    },
   ];
 
   const handleMenuNavigation = (path) => {

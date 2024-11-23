@@ -11,11 +11,11 @@ const WipPage = () => {
 
   const images = useMemo(
     () => [
+      "/Wip10.jpeg",
       "/HomePhotobook.jpeg",
       "/Andersom4.jpeg",
       // "/Wip1.jpeg",
       "/Wip2.jpeg",
-
       // "/Wip4.jpeg",
       "/Wip5.jpeg",
       "/Wip3.jpeg",
@@ -24,6 +24,7 @@ const WipPage = () => {
       // "/Wip8.jpeg",
       "/Wip9.jpeg",
       "/Andersom1.jpeg",
+      "/Wip11.jpeg",
     ],
     []
   );
@@ -109,7 +110,7 @@ const WipPage = () => {
       </div>
       <a
         className="next-btn"
-        onClick={() => handleNavigation("/playtime-photobook")}
+        onClick={() => handleNavigation("/portrait-of-an-artist-jaouad-alloul")}
       >
         Next - Portrait of an artist Jaoud Alloul
       </a>

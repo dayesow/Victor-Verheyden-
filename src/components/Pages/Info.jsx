@@ -26,7 +26,7 @@ const Info = () => {
 
   const handleCopyEmail = async () => {
     try {
-      await navigator.clipboard.writeText("victorverheyden@gmail.com");
+      await navigator.clipboard.writeText("victor.verheyden@outlook.com");
       setButtonText("Email copied! Can't wait to hear from you");
       setTimeout(() => {
         setButtonText("Copy my email address");
@@ -89,6 +89,23 @@ const Info = () => {
               style={{ color: "black", display: "flex" }}
             />
           </a>
+          {/* <button
+            className="email-button"
+            onClick={() =>
+              (window.location.href =
+                "https://www.instagram.com/victor_verheyden/")
+            }
+          >
+            Design by Victor Verheyden
+          </button>
+          <button
+            className="email-button"
+            onClick={() =>
+              (window.location.href = "https://www.instagram.com/daye_sow_/")
+            }
+          >
+            Developed by Daye Sow
+          </button> */}
         </div>
       </div>
     </section>
