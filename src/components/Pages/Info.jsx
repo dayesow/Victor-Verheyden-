@@ -90,7 +90,7 @@ const Info = () => {
             />
           </a>
           {/* <button
-            className="email-button"
+            className="email-button" 
             onClick={() =>
               (window.location.href =
                 "https://www.instagram.com/victor_verheyden/")

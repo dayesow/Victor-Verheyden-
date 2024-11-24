@@ -16,7 +16,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
     },
     {
       path: "/portrait-of-a-writer-rodrigo-costa-ribeiro",
-      label: "Portrait of a writer, Rodrigo Costa Ribeiro",
+      label: "Rodrigo Costa Ribeiro",
     },
     {
       path: "/wip",
@@ -24,7 +24,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
     },
     {
       path: "/portrait-of-an-artist-jaouad-alloul",
-      label: "Portraits of an artist, Jaouad Alloul",
+      label: "Jaouad Alloul",
     },
     { path: "/playtime-photobook", label: "Playtime Photobook" },
     { path: "/performance-les-hommes-andersom", label: "Les Hommes Andersom" },
