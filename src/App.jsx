@@ -17,6 +17,7 @@ import Menu from "./components/menu/Menu";
 import Info from "./components/Pages/Info";
 import Photobook from "./components/Pages/Photobook";
 import Iskander from "./components/Pages/Iskander";
+import { initGA, trackPageView } from "./analytics";
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -24,6 +25,16 @@ function App() {
   const [isMenuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/home" || location.pathname === "/";
+
+  useEffect(() => {
+    // Initialize Google Analytics only once
+    initGA();
+  }, []);
+
+  useEffect(() => {
+    // Track page views on route change
+    trackPageView(location.pathname);
+  }, [location]);
 
   useEffect(() => {
     const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");

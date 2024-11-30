@@ -4,6 +4,7 @@ import ScrollToTop from "../scrollToTop/ScrollToTop";
 import { useEffect, useRef, useState } from "react";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import Lightbox from "../utilComponents/lightBox/Lightbox";
+import { trackEvent } from "../../analytics";
 
 const LesHommesAndersom = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -145,7 +146,14 @@ const LesHommesAndersom = () => {
         {renderImage(6)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/matthias-geerts-morgan-lugo")}
+          onClick={() => {
+            trackEvent({
+              category: "Navigation",
+              action: "Clicked Next Button",
+              label: "Next - Matthias Geerts & Morgan Lugo",
+            });
+            handleNavigation("/matthias-geerts-morgan-lugo");
+          }}
         >
           Next - Matthias geerts & Morgan Lugo
         </a>

@@ -5,6 +5,7 @@ import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./strellson.scss";
 import Lightbox from "../utilComponents/lightBox/Lightbox";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
+import { trackEvent } from "../../analytics";
 
 const Strellson = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -120,7 +121,14 @@ const Strellson = () => {
         {renderImage(2)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/iskander-moon")}
+          onClick={() => {
+            trackEvent({
+              category: "Navigation",
+              action: "Clicked Next Button",
+              label: "Next - Iskander - Moon",
+            });
+            handleNavigation("/iskander-moon");
+          }}
         >
           Next - Iskander - Moon
         </a>

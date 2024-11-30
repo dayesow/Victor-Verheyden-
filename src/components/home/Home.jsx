@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 // import gsap from "gsap";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./home.scss";
+import { trackEvent } from "../../analytics";
 
 // eslint-disable-next-line react/prop-types
 const Home = ({ toggleMenu }) => {
@@ -88,7 +89,14 @@ const Home = ({ toggleMenu }) => {
             },
           ].map(({ href, imgSrc, alt, title }, index) => (
             <a
-              onClick={() => handleNavigation(href)} // Gebruik hier handleNavigation
+              onClick={() => {
+                trackEvent({
+                  category: "Navigation",
+                  action: "Clicked Tooltip",
+                  label: title,
+                });
+                handleNavigation(href);
+              }}
               className="tooltip"
               key={index}
             >
@@ -102,10 +110,31 @@ const Home = ({ toggleMenu }) => {
           ))}
         </div>
         <div className="tooltip-footer">
-          <a onClick={toggleMenu} className="btn">
+          <a
+            onClick={() => {
+              trackEvent({
+                category: "Navigation",
+                action: "Clicked See More on Home",
+                label: "See More Button",
+              });
+              toggleMenu();
+            }}
+            className="btn"
+          >
             See more
           </a>
-          <a onClick={() => handleNavigation("/info")}>Info</a>
+          <a
+            onClick={() => {
+              trackEvent({
+                category: "Navigation",
+                action: "Clicked Info on Home",
+                label: "Info Button",
+              });
+              handleNavigation("/info");
+            }}
+          >
+            Info
+          </a>
         </div>
       </div>
     </>

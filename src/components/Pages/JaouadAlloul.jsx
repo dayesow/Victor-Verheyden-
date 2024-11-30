@@ -4,6 +4,7 @@ import { useHandleNavigation } from "../pageTransition/PageTransition";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 import "./jaouadAlloul.scss";
 import Lightbox from "../utilComponents/lightBox/Lightbox";
+import { trackEvent } from "../../analytics";
 
 const JaouadAlloul = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -154,7 +155,14 @@ const JaouadAlloul = () => {
         {renderImage(7)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/playtime-photobook")}
+          onClick={() => {
+            trackEvent({
+              category: "Navigation",
+              action: "Clicked Next Button",
+              label: "Next - Playtime Photobook",
+            });
+            handleNavigation("/playtime-photobook");
+          }}
         >
           Next - Playtime Photobook
         </a>

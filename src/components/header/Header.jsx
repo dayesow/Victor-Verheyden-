@@ -1,3 +1,4 @@
+import { trackEvent } from "../../analytics";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./header.scss";
 
@@ -8,7 +9,17 @@ const Header = ({ toggleMenu }) => {
   return (
     <header className="header">
       <div className="header-left">
-        <a onClick={() => handleNavigation("/home")} className="logo">
+        <a
+          onClick={() => {
+            trackEvent({
+              category: "Button Click",
+              action: "Clicked Logo",
+              label: "Victor Verheyden Homepage",
+            });
+            handleNavigation("/home");
+          }}
+          className="logo"
+        >
           <span className="initials">V</span>
           <span className="full-name">ictor</span>
           <span className="initials"> V</span>
@@ -17,7 +28,17 @@ const Header = ({ toggleMenu }) => {
       </div>
       <div className="header-right">
         {/* The plus button triggers the toggleMenu function */}
-        <a className="plus-btn" onClick={toggleMenu}>
+        <a
+          className="plus-btn"
+          onClick={() => {
+            trackEvent({
+              category: "Button Click",
+              action: "Clicked Plus Button",
+              label: "Menu Toggle",
+            });
+            toggleMenu();
+          }}
+        >
           <span>+</span>
         </a>
       </div>

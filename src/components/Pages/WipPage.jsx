@@ -3,6 +3,7 @@ import gsap from "gsap";
 import "./wipPage.scss";
 import Marquee from "../marquee/Marquee";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
+import { trackEvent } from "../../analytics";
 
 const WipPage = () => {
   const handleNavigation = useHandleNavigation();
@@ -106,7 +107,14 @@ const WipPage = () => {
       </div>
       <a
         className="next-btn"
-        onClick={() => handleNavigation("/portrait-of-an-artist-jaouad-alloul")}
+        onClick={() => {
+          trackEvent({
+            category: "Navigation",
+            action: "Clicked Next Button",
+            label: "Next - Portrait of an artist Jaoud Alloul",
+          });
+          handleNavigation("/portrait-of-an-artist-jaouad-alloul");
+        }}
       >
         Next - Portrait of an artist Jaoud Alloul
       </a>

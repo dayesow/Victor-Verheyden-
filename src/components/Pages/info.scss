@@ -4,89 +4,129 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
   width: 80%;
   margin: 0 auto;
 
   @media (max-width: 768px) {
-    width: calc(100% - 2.5rem);
+    width: 100%;
+    padding: 0 1.25rem;
     justify-content: flex-start;
   }
+}
 
-  .grid-container {
-    display: grid;
-    grid-template-columns: repeat(
-      12,
-      1fr
-    ); /* 12 kolommen van gelijke breedte */
-    grid-template-rows: 12; /* Automatisch aantal rijen gebaseerd op content */
-    // gap: 2rem;
+.grid-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100%;
+  width: 100%;
+  gap: 2.5rem;
+
+  @media (max-width: 768px) {
+    display: grid !important;
+    padding-top: 6rem;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "img-container"
+      "info-text"
+      "contact-container"
+      "credits-container";
+    gap: 0.5rem;
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
+.img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+  height: 70%;
+  width: 45%;
+  padding-left: 3rem;
+  grid-area: img-container;
+  @media (max-width: 768px) {
+    width: 100%;
+    padding-left: 0;
+    grid-area: img-container !important;
+    margin-bottom: 2rem;
+    align-items: flex-start;
+  }
+
+  > img {
+    object-fit: contain;
     width: 100%;
 
     @media (max-width: 768px) {
-      grid-template-columns: 1fr;
+      width: 100%;
+      max-width: 400px;
+    }
+  }
+}
+
+.left-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 55%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    display: block;
+  }
+
+  .info-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7rem;
+
+    @media (max-width: 768px) {
+      padding-bottom: 3rem;
     }
 
     .info-text {
-      margin-top: 8rem;
-      grid-column: 1 / span 6; /* Start op kolom 1 en neemt 6 kolommen in beslag */
-      grid-row: 1 / span 2; /* Eerste rij */
-
-      @media (max-width: 768px) {
-        grid-column: 1 / span 1;
-        grid-row: 1;
-        padding-top: 5rem;
-        width: 100%;
-        margin-top: 0rem;
-      }
-
-      > p {
-        color: black;
-        font-size: 12px;
-        line-height: 18px;
-        font-weight: 400;
-        margin-bottom: 1rem;
-        opacity: 1;
-        transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-      }
-    }
-
-    .img-container {
-      grid-column: 8 / span 5; /* Start op kolom 7 en neemt 6 kolommen in beslag */
-      grid-row: 1 / span 2; /* Eerste rij */
-      width: 100%;
-
-      @media (max-width: 768px) {
-        grid-column: 1 / span 1;
-        grid-row: 2;
-        margin-bottom: 3rem;
-      }
-
-      > img {
-        object-fit: contain;
-        height: 100%;
-        width: 100%;
-      }
+      height: 100%;
+      grid-area: info-text;
     }
 
     .contact-container {
-      margin-top: 6rem;
-      grid-column: 1 / span 6; /* Start op kolom 1 en neemt 6 kolommen in beslag */
-      grid-row: 2 / span 3; /* Tweede rij */
-
+      padding-top: 3rem;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
       gap: 1.5rem;
+      height: 100%;
+      grid-area: contact-container;
 
       @media (max-width: 768px) {
-        grid-column: 1 / span 1;
-        grid-row: 3;
-        padding-bottom: 3rem;
-        margin-top: 0rem;
+        padding-top: 2rem;
       }
     }
   }
+
+  .credits-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+    gap: 0.5rem;
+    grid-area: credits-container;
+  }
+}
+
+p {
+  color: black;
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 400;
+  margin-bottom: 1rem;
+  opacity: 1;
+  transition: opacity 1.5s cubic-bezier(0.25, 0.1, 0.25, 1);
 }
 
 .email-button {
@@ -101,6 +141,10 @@
   &:hover {
     font-style: italic;
   }
+
+  @media (max-width: 768px) {
+    cursor: pointer;
+  }
 }
 
 .email-button::before {
@@ -113,9 +157,6 @@
   border-radius: 50%;
   background-color: #000000;
   transition: opacity 0.5s;
-}
-
-.email-button::before {
   transform: translateX(-150%) translateY(-50%);
 }
 
@@ -123,6 +164,7 @@
   opacity: 1;
   animation: blink 750ms infinite;
 }
+
 @keyframes blink {
   0% {
     opacity: 1;
@@ -135,6 +177,7 @@
   }
 }
 
-.fade-in {
-  opacity: 1;
+.credits-text {
+  font-size: 10px;
+  font-style: italic;
 }

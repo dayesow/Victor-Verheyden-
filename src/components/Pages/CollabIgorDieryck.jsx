@@ -4,6 +4,7 @@ import ScrollToTop from "../scrollToTop/ScrollToTop";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./collabIgorDieryck.scss";
 import Lightbox from "../utilComponents/lightBox/Lightbox";
+import { trackEvent } from "../../analytics";
 
 const CollabIgorDieryck = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -139,9 +140,14 @@ const CollabIgorDieryck = () => {
         ))}
         <a
           className="next-btn"
-          onClick={() =>
-            handleNavigation("/portrait-of-a-writer-rodrigo-costa-ribeiro")
-          }
+          onClick={() => {
+            trackEvent({
+              category: "Navigation",
+              action: "Clicked Next Button",
+              label: "Next - Portrait of an artist Rodrigo",
+            });
+            handleNavigation("/portrait-of-a-writer-rodrigo-costa-ribeiro");
+          }}
         >
           Next - Portrait of an artist Rodrigo
         </a>

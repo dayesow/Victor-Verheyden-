@@ -4,6 +4,7 @@ import "./rodrigo.scss";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import { useEffect, useRef, useState } from "react";
 import Lightbox from "../utilComponents/lightBox/Lightbox";
+import { trackEvent } from "../../analytics";
 
 const Rodrigo = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -170,7 +171,17 @@ const Rodrigo = () => {
             ))}
         </div>
       </div>
-      <a className="next-btn" onClick={() => handleNavigation("/wip")}>
+      <a
+        className="next-btn"
+        onClick={() => {
+          trackEvent({
+            category: "Navigation",
+            action: "Clicked Next Button",
+            label: "Next - WIP",
+          });
+          handleNavigation("/wip");
+        }}
+      >
         Next - WIP
       </a>
       <ScrollToTop />

@@ -7,6 +7,7 @@ import Lightbox from "../utilComponents/lightBox/Lightbox";
 import ScrollToTop from "../scrollToTop/ScrollToTop";
 
 import "./iskander.scss";
+import { trackEvent } from "../../analytics";
 
 const Iskander = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -129,7 +130,14 @@ const Iskander = () => {
         {renderImage(3)}
         <a
           className="next-btn"
-          onClick={() => handleNavigation("/collaboration-with-igordieryck")}
+          onClick={() => {
+            trackEvent({
+              category: "Navigation",
+              action: "Clicked Next Button",
+              label: "Next - Collaboration w. Igor Dieryck",
+            });
+            handleNavigation("/collaboration-with-igordieryck");
+          }}
         >
           Next - Collaboration w. Igor Dieryck
         </a>

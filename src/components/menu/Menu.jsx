@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { useHandleNavigation } from "../pageTransition/PageTransition";
 import "./menu.scss";
+import { trackEvent } from "../../analytics";
 
 // eslint-disable-next-line react/prop-types
 const Menu = ({ isMenuOpen, toggleMenu }) => {
@@ -38,7 +39,15 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
     },
   ];
 
-  const handleMenuNavigation = (path) => {
+  const handleMenuNavigation = (path, label) => {
+    // Track the event
+    trackEvent({
+      category: "Menu Navigation",
+      action: "Clicked Menu Item",
+      label: label,
+    });
+
+    // Close the menu and navigate
     toggleMenu();
     setTimeout(() => {
       handleNavigation(path);
@@ -83,7 +92,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
                   ? "active"
                   : ""
               }`}
-              onClick={() => handleMenuNavigation("/home")}
+              onClick={() => handleMenuNavigation("/home", "Home")}
             >
               Works
             </a>
@@ -92,7 +101,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
             {menuItems.map((item) => (
               <li key={item.path}>
                 <a
-                  onClick={() => handleMenuNavigation(item.path)}
+                  onClick={() => handleMenuNavigation(item.path, item.label)}
                   className={`menu-btn ${
                     location.pathname === item.path ? "active" : ""
                   }`}
@@ -107,7 +116,7 @@ const Menu = ({ isMenuOpen, toggleMenu }) => {
               className={`menu-btn ${
                 location.pathname === "/info" ? "active" : ""
               }`}
-              onClick={() => handleMenuNavigation("/info")}
+              onClick={() => handleMenuNavigation("/info", "Info")}
             >
               Info
             </a>
