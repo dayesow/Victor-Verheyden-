@@ -17,7 +17,7 @@
 .grid-container {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   height: 100%;
   width: 100%;
   gap: 2.5rem;
@@ -27,7 +27,7 @@
     padding-top: 6rem;
     grid-template-columns: 1fr;
     grid-template-areas:
-      "img-container"
+      "right-container"
       "info-text"
       "contact-container"
       "credits-container";
@@ -37,7 +37,7 @@
   }
 }
 
-.img-container {
+.right-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -45,22 +45,37 @@
   height: 70%;
   width: 45%;
   padding-left: 3rem;
-  grid-area: img-container;
+  grid-area: right-container;
   @media (max-width: 768px) {
     width: 100%;
     padding-left: 0;
-    grid-area: img-container !important;
+    grid-area: right-container !important;
     margin-bottom: 2rem;
     align-items: flex-start;
+    gap: 0.5rem;
   }
 
-  > img {
-    object-fit: contain;
-    width: 100%;
-
-    @media (max-width: 768px) {
+  .img-container {
+    > img {
+      object-fit: contain;
       width: 100%;
-      max-width: 400px;
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
+    }
+  }
+
+  .yentl-container {
+    > button {
+      background-color: transparent;
+      border: none;
+      color: black;
+      cursor: none;
+      font-size: 10px;
+      font-family: "IBM Plex Mono", monospace;
+      position: relative;
+      font-style: italic;
     }
   }
 }
@@ -68,8 +83,7 @@
 .left-container {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  padding: 0;
+
   min-height: 100%;
   width: 55%;
 
@@ -84,9 +98,10 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 7rem;
-
+    padding-top: 7rem;
     @media (max-width: 768px) {
       padding-bottom: 3rem;
+      padding-top: 0rem;
     }
 
     .info-text {
@@ -113,9 +128,14 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: end;
     height: 100%;
     gap: 0.5rem;
     grid-area: credits-container;
+
+    @media (max-width: 768px) {
+      padding-bottom: 2rem;
+    }
   }
 }
 

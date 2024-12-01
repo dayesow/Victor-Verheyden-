@@ -117,25 +117,17 @@ const Info = () => {
             </button>
           </div>
         </div>
-        <div className="img-container">
-          <img
-            src="/NewInfo.jpeg"
-            alt="info-picture-victor-verheyden"
-            loading="lazy"
-          />
-          <button
-            className="email-button credits-text"
-            onClick={() => {
-              trackEvent({
-                category: "Button Click",
-                action: "Clicked Yentl Gijbels Link",
-                label: "Yentl Gijbels Website",
-              });
-              window.location.href = "https://www.yentlgijbels.com/";
-            }}
-          >
-            Yentl Gijbels
-          </button>
+        <div className="right-container">
+          <div className="img-container">
+            <img
+              src="/NewInfo.jpeg"
+              alt="info-picture-victor-verheyden"
+              loading="lazy"
+            />
+          </div>
+          <div className="yentl-container">
+            <button>Yentl Gijbels</button>
+          </div>
         </div>
       </div>
     </section>
