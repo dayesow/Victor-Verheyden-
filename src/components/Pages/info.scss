@@ -17,7 +17,8 @@
 .grid-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  // align-items: center;
+
   height: 100%;
   width: 100%;
   gap: 2.5rem;
@@ -41,8 +42,9 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: space-between;
   gap: 1.5rem;
-  height: 70%;
+
   width: 45%;
   padding-left: 3rem;
   grid-area: right-container;
@@ -56,6 +58,11 @@
   }
 
   .img-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     > img {
       object-fit: contain;
       width: 100%;
@@ -67,6 +74,13 @@
   }
 
   .yentl-container {
+    height: 1%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: flex-start;
     > button {
       background-color: transparent;
       border: none;
@@ -79,12 +93,11 @@
     }
   }
 }
-
 .left-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
-  min-height: 100%;
   width: 55%;
 
   @media (max-width: 768px) {
@@ -129,6 +142,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: end;
+
     height: 100%;
     gap: 0.5rem;
     grid-area: credits-container;
