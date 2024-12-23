@@ -18,6 +18,7 @@ import Info from "./components/Pages/Info";
 import Photobook from "./components/Pages/Photobook";
 import Iskander from "./components/Pages/Iskander";
 import { initGA, trackPageView } from "./analytics";
+import Lenis from "@studio-freight/lenis";
 
 function App() {
   const [showPreloader, setShowPreloader] = useState(true);
@@ -61,6 +62,27 @@ function App() {
 
     console.log("%cDesign by Victor Verheyden", style);
     console.log("%cDeveloped by Daye Sow", style);
+  }, []);
+
+  useEffect(() => {
+    // Initialiseer Lenis
+    const lenis = new Lenis({
+      duration: 1.2, // Duur van de animatie (in seconden)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing-functie
+      smooth: true,
+    });
+
+    // Update loop
+    const handleRaf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(handleRaf);
+    };
+    requestAnimationFrame(handleRaf);
+
+    // Cleanup om memory leaks te voorkomen
+    return () => {
+      lenis.destroy();
+    };
   }, []);
 
   return (
